@@ -5,8 +5,8 @@ Understanding R’s Cross Correlation ccf
 
 I wanted to use the `ccf` function in a project. I had so much trouble
 understanding it’s output. The documentation is rather scarce. Reading
-it carefully did not help me. I had to experiment with the function and
-write it down for myself. Maybe, what helped me, may help you, too.
+it carefully only helped a bit. I had to experiment with the function
+and write it down for myself. Maybe, what helped me may help you, too.
 
 ## Cross Correlations
 
@@ -52,7 +52,7 @@ I not get a correlation of `r=1` for all time lags? When you simply
 correlate two identical linear increasing sequences, we should always
 get a correlation of 1. Should we not? Depends.
 
-![Two linear sequences and a time lag of 2.](./pub/ccf_linear.png)
+![Two linear sequences and a time lag of 2.](./ccf_linear.png)
 
 The first thing we have to understand is that `ccf` will not treat your
 input as just another vector. It will interpret it as time series. What
@@ -135,13 +135,7 @@ way, I do not know. It could move the smaller sequence from the left to
 the right completely covering the longer sequence.
 
 ![Two linear sequences of different length during
-cross-correlation.](./pub/ccf_linear_sub.png)
-
-<!--
-$$
-r_3 = (6-8)\cdot(8-5.5) + (7-8)\cdot(9-5.5) + (8-8)\cdot(10-5.5) \over (...)
-$$
--->
+cross-correlation.](./ccf_linear_sub.png)
 
 What happened is this:
 
@@ -161,16 +155,15 @@ ts.intersect(as.ts(1:10), as.ts(1:5))
     ## 4           4          4
     ## 5           5          5
 
-As you can see, R simply cuts the longer sequence off. What you want to
+As you can see, R simply cuts off the longer sequence. What you want to
 get is `ccf(1:10, 1:5)`. What you actually get is `ccf(1:5, 1:5)`. The
 task of `ts.intersect()` is to combine the two sequences to a data
 frame. All columns of a data frame must have the same length and R must
 decide whether to cut one sequence (`ts.intersect()`) or to fill the
 shorter sequence with a dummy value (`ts.union()` uses `NA`).
 
-This leads us back to the confidence interval. What we can learn from
-the above is how closely `acf()` and `ccf()` are related. What more or
-less happens when we call \`\`ccf()’’ is:
+What we can learn from the above is how closely `acf()` and `ccf()` are
+related. What more or less happens when we call `ccf()` is:
 
 ``` r
 acf(ts.intersect(as.ts(1:10), as.ts(1:5)))
@@ -179,31 +172,37 @@ acf(ts.intersect(as.ts(1:10), as.ts(1:5)))
 ![](CrossCorrelations_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
 
 This organises the results in a different way, but they are essentially
-the same.
+the same. The upper left and lower right quadrant show the
+auto-correlations. The cross-correlations are divded into two panels.
+The lower left panel shows cross-correlation at negative time lags, the
+upper right panel shows the positive lags.
 
-``` r
-acf(ts.intersect(as.ts(1:10), as.ts(1:5)), ci.type = "ma", ci.col = "red")
-```
-
-![](CrossCorrelations_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+I had the hope that we can use this way to get proper confidence
+intervals for cross-correlations. Unfortunately, we get confidence only
+for auto-correlations. If anyone can explain the reason, I would be
+happy to add it here but I do not know one.
 
 ## Summary
 
-It was a hard piece of work to put all this together. The fact tha R
+It was a hard piece of work to put all this together. The fact that R
 handles cross- and auto-correlations with the same set of function adds
 unnecessary compelexity. I understand that these may use the same
-underlying code. But usage should not be affected by it. Unfortunately,
-the documentation does not explain the complexity. It could be improved.
-So could the messages. I anyone from the R team reads this, contact me
-if you are interested in my suggestions.
+underlying code but usage should not be affected by it. Unfortunately,
+the documentation does not reduce the complexity through information. It
+could be improved. So could the messages. I anyone from the R team reads
+this, contact me if you are interested in my suggestions.
 
-## References
+## References & Further Reading
 
 Bourke, P. (1996). [Cross Correlation: AutoCorrelation – 2D Pattern
 Identification](http://paulbourke.net/miscellaneous/correlate/).
 
 Venables, W.N., & Ripley, B.D. (2002). [Modern Applied Statistics with
 S](https://www.springer.com/gp/book/9780387954578). Fourth edition.
+
+Gunther, N. (2014). [Melbourne’s Weather and Cross
+Correlations](https://www.r-bloggers.com/melbournes-weather-and-cross-correlations/).
+[R-bloggers](https://www.r-bloggers.com/)
 
 ## Session Info
 
