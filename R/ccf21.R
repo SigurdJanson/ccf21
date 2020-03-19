@@ -1,13 +1,71 @@
 
 
-.Cor_ccf <- function(x, y, n = NA, mean = NA, sttdev = NA) {
-  # if mean and stddev are given, treat x and y as stationary time series
-  # if not, compute your own mean and stddev
+#' .CorConf_Fisher
+#' Computes confidence intervals for correlation coefficients.
+#' @param r Correlation coefficient (pearson)
+#' @param n Sample size of the data underlying r
+#' @param ci Confidence limit. Default is 0.95.
+#' @details The function uses the Fisher z transform to get approximately normal
+#' distributed correlations, computes the confidence range and transforms the
+#' values back to correlations.
+#' @return A two-comlumn matrix with each row holding the range of confidence.
+#' @author Jan Seifert
+#' @references Bonett, D. G. & Wright, T. A. (2000). Sample Size Requirements 
+#' for Estimating Pearson, Kendall and Spearman Correlations.” Psychometrika, 
+#' 65 (1), p. 23-28.
+#' @examples
+.CorConf_Fisher < function( r, n, ci = 0.95 ) {
+  if(missing(r)) return(NA)
+  if(any(r > 1) || any(r < -1)) 
+    stop("Fisher Z transformation is only defined for correlations (i.e. -1 <= r <= 1)")
+  
+  # Assume two-sided limits, i.e. use 0.975 instead 0.95
+  cutoff <- qnorm( (ci+1)*0.5 )
+  
+  # Identify +/-1 because transformation cannot handle that
+  rp1 <- which(r == 1)
+  rm1 <- which(r == -1)
+  # Fisher z transform
+  z <- log( (1+r) / (1-r) ) / 2
+  z[rp1] <- Inf  # Set r= 1/-1 to Inf/-Inf
+  z[rm1] <- -Inf
+  #
+  zci <- cbind( (z - cutoff * sqrt(1/(n-3))),
+                (z + cutoff * sqrt(1/(n-3))) )
+  # inverse fisher transform to get r back
+  rci <- (exp(2*zci)-1) / (exp(2*zci)+1)
+  rci[rp1] <- c(1, 1)
+  rci[rm1] <- c(-1, -1)
+  
+  return(rci)
 }
 
 
-.HandleLost_ccf <- function() {
+
+.Cor_ccf <- function(x, y, n = NA, mean = c(NA, NA), sd = c(NA, NA)) {
+  # If mean, sd, or n are given, treat x and y as stationary time series.
+  # mean, sd, and n are vectors with 2 positions one for x and y each. 
+  # If only 1 value is given, the function uses it for both vectors.
+  # To be treated as non-stationary, n, mean and sd must all be NA.
+  # In this case, compute your own mean, sd, and n.
+  if (length(x) != length(y)) stop("Correlations assume two vectors of equal length.")
+  
+  if (anyNA(mean) && anyNA(stddev) && anyNA(n)) {
+    test <- cor.test(x, y, alternative = "two.sided", method = "pearson", conf.level = 0.95)
+  } else {
+    # make sure mean & sd have the format 'c(x, y)' without NAs
+    if (length(mean) == 1) mean <- c(mean, mean)
+    if (length(sd)   == 1) sd   <- c(sd, sd)
+    mean[which(is.na(mean))] <- c(mean(x), mean(y))[which(is.na(mean))]
+    sd  [which(is.na(sd))]   <- c(sd(x), sd(y))[which(is.na(sd))]
+    if (is.na(n))  n <- length(x)
+    #
+    cov <- sum( (x - mean[1]) * (y - mean[2]) ) / (n-1)
+    cor <- cov / sd[1] / sd[2]
+    # TODO
+  }
 }
+
 
 
 
