@@ -11,12 +11,21 @@
 
 
 
+#' .Shift_ccf
+#' Shifts the elements of a vector by k positions. Empty positions can be replaced
+#' by an arbitrary value or the shifting is treated cyclic, i.e. elements shifted out
+#' on the one end will come back on the other.
+#' @param y 
+#' @param k How many elements 'y' to be shifted. k < 0 shifts to the left, k > 0 to the right.
+#' @param replace How to treat vector elements that get lost. See details
+#' @details Shifting to the left leaves open elements on the right 
+#' and vice versa. This function offers three ways to handle the fact that 
+#' elements get lost through shifting. 
+#' * \code{replace = FALSE}: cut it (today's default), 
+#' * \code{replace = TRUE}:  wrap it back assuming the sequence is circular.
+#' * \code{replace = as.double(anyhting)}: or fill it with data.
+#' @return A new shifted vector. 
 .Shift_ccf <- function(y, k, replace = FALSE) {
-  # Different ways to handle the sequence parts that protrude: 
-  # replace = FALSE: cut it (today's default), 
-  # replace = TRUE:  wrap it back assuming the sequence is circular, 
-  # replace = as.double(anyhting): or fill it with data.
-  
   # PRECONDITIONS
   if(k == 0) return(y)
   
@@ -55,7 +64,7 @@
 ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"), 
                  stationary = TRUE, 
                  protrusionaction = NULL, 
-                 windowaction = c("cut", "imprison"),
+                 windowaction = c("cut", "imprison"), # ignored if length(x) == length(y)
                  plot = TRUE, na.action = na.fail, ...)  {
   # PRECONDITIONS
   if (is.matrix(x) || is.matrix(y)) 
