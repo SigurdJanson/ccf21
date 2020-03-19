@@ -42,16 +42,22 @@
 
 
 
-.Cor_ccf <- function(x, y, n = NA, mean = c(NA, NA), sd = c(NA, NA)) {
+.Cor_ccf <- function(x, y, type = c("correlation", "covariance"),
+                     n = NA, mean = c(NA, NA), sd = c(NA, NA)) {
   # If mean, sd, or n are given, treat x and y as stationary time series.
   # mean, sd, and n are vectors with 2 positions one for x and y each. 
   # If only 1 value is given, the function uses it for both vectors.
   # To be treated as non-stationary, n, mean and sd must all be NA.
   # In this case, compute your own mean, sd, and n.
   if (length(x) != length(y)) stop("Correlations assume two vectors of equal length.")
+  type <- match.arg(type)
+  
   
   if (anyNA(mean) && anyNA(stddev) && anyNA(n)) {
-    test <- cor.test(x, y, alternative = "two.sided", method = "pearson", conf.level = 0.95)
+    if (type == "correlation")
+      test <- cor(x, y) #cor.test(x, y, alternative = "two.sided", method = "pearson", conf.level = 0.95)
+    else
+      test <- cov(x, y)
   } else {
     # make sure mean & sd have the format 'c(x, y)' without NAs
     if (length(mean) == 1) mean <- c(mean, mean)
@@ -61,8 +67,10 @@
     if (is.na(n))  n <- length(x)
     #
     cov <- sum( (x - mean[1]) * (y - mean[2]) ) / (n-1)
-    cor <- cov / sd[1] / sd[2]
-    # TODO
+    if (type == "correlation")
+      test <- cov / sd[1] / sd[2]
+    else
+      test <- cov
   }
 }
 
