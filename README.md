@@ -23,7 +23,7 @@ When one sequence (y) is shorter than the other (Y) the function should use this
 
 Step 1\
 Sequence Y: ####################\
-Sequence y: ####\
+Sequence y: ####
 
 Step 2\
 Sequence Y: ####################\
@@ -31,35 +31,35 @@ Sequence y:  ####
 
 Step 3\
 Sequence Y: ####################\
-Sequence y:   ####\
+Sequence y:   ####
 
-... \
+... 
 
 Last step\
 Sequence Y: ####################\
-Sequence y:                 ####\
+Sequence y:                 ####
 
 
 
 == Shifting Vectors 
 
-Sequence x:   1##################N\
-Sequence y: ->1##################M\
+Sequence x:   1##################N\
+Sequence y: ->1##################M
 
 Shift y by 4 elements leaves 4 open positions on the right\
 Sequence x: 1##################N\
-Sequence y: ....1##################M\
+Sequence y: ....1##################M
 
 Option 1: simply cut\
 Sequence x:     ###############N\
-Sequence y:     1###############\
+Sequence y:     1###############
 
 Option 2: fill it with '0' gives y\
 Sequence x: 1##################N\
-Sequence y: 00001###############\
+Sequence y: 00001###############
 
 Option 3: wrap y around\
 Sequence x: 1##################N\
-Sequence y: ###M1###############\
+Sequence y: ###M1###############
 
 
