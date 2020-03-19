@@ -14,7 +14,7 @@
 #' for Estimating Pearson, Kendall and Spearman Correlations.” Psychometrika, 
 #' 65 (1), p. 23-28.
 #' @examples
-.CorConf_Fisher < function( r, n, ci = 0.95 ) {
+.CorConf_Fisher <- function( r, n, ci = 0.95 ) {
   if(missing(r)) return(NA)
   if(any(r > 1) || any(r < -1)) 
     stop("Fisher Z transformation is only defined for correlations (i.e. -1 <= r <= 1)")
@@ -42,20 +42,31 @@
 
 
 
+#' .Cor_ccf
+#' Correlation two vectors x and y. Mean, standard deviation and sample size can 
+#' deviate from sample estimates.
+#' @param x,y Numeric vectors
+#' @param type Character string giving the type of acf to be computed. 
+#' Allowed values are "correlation" (the default), "covariance". Can be abbreviated.
+#' @param n Sample size of x and y.
+#' @param mean Means of x and y. Either a single value for both or one mean each.
+#' @param sd Standard deviations of x and y. Either a single value for 
+#' both or one mean each.
+#'
+#' @details If mean, sd, or n are given, treat x and y as stationary time 
+#' series. To be treated as non-stationary, n, mean and sd must ALL be NA.
+#' In this case, the functions determines mean, sd, and n based on x and y.
+#' @return The correlation between x and y
 .Cor_ccf <- function(x, y, type = c("correlation", "covariance"),
                      n = NA, mean = c(NA, NA), sd = c(NA, NA)) {
-  # If mean, sd, or n are given, treat x and y as stationary time series.
-  # mean, sd, and n are vectors with 2 positions one for x and y each. 
-  # If only 1 value is given, the function uses it for both vectors.
-  # To be treated as non-stationary, n, mean and sd must all be NA.
-  # In this case, compute your own mean, sd, and n.
+  # PRECONDITIONS
   if (length(x) != length(y)) stop("Correlations assume two vectors of equal length.")
   type <- match.arg(type)
   
-  
+  # CODE
   if (anyNA(mean) && anyNA(stddev) && anyNA(n)) {
     if (type == "correlation")
-      test <- cor(x, y) #cor.test(x, y, alternative = "two.sided", method = "pearson", conf.level = 0.95)
+      test <- cor(x, y) 
     else
       test <- cov(x, y)
   } else {
@@ -72,6 +83,8 @@
     else
       test <- cov
   }
+  # Finish
+  return(test)
 }
 
 
