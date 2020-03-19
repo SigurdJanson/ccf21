@@ -141,27 +141,34 @@
 #'
 #' 
 ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"), 
-                 stationary = TRUE, 
+                 stationary = NULL, 
                  protrusionaction = NULL, 
                  windowaction = c("cut", "imprison"), # ignored if length(x) == length(y)
                  plot = TRUE, na.action = na.fail, ...)  {
-  # PRECONDITIONS
+  # PRECONDITIONS & PREPARATIONS
   if (is.matrix(x) || is.matrix(y)) 
     stop("univariate time series only.")
-  if ( (is.ts(x) || is.ts(y)) && !stationary )
-    stop("Conflicting arguments x/y and 'stationary': time series objects shall be assumed to be stationarity.")
+  if ( missing(stationary) )
+      stationary <- (is.ts(x) || is.ts(y))
+  
+  if (is.null(lag.max)) 
+    lag.max <- floor(10 * (log10(sampleT) - log10(nser)))
+  lag.max <- as.integer(min(lag.max, sampleT - 1L))
+  if (is.na(lag.max) || lag.max < 0) 
+    stop("'lag.max' must be at least 0")
+  
+  type <- match.arg(type)
   
   LenX <- length(x)
   LenY <- length(y)
   if (LenX != LenY && missing(windowaction)) 
-    stop("'windowaction' has been set despite equal length of 'x' and 'y'.")
-  
-  # PREPARE
+    stop("'windowaction' is not set despite unequal length of 'x' and 'y'.")
   if (missing(windowaction))
     windowaction <- "cut"
   else
     windowaction <- match.arg(windowaction)
   
+  # RUN
   # Classic ccf call
   if(stationary && missing(protrusionaction) && windowaction == "cut") {
     X <- ts.intersect(as.ts(x), as.ts(y))
@@ -175,9 +182,10 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
     acf.out$snames <- paste(acf.out$snames, collapse = " & ")
   }
   
+  if(!stationary && missing(protrusionaction) && windowaction == "cut") {
+  }
   
-  
-  # Finish up
+  # FINISH
   # acf.out <- structure(list(acf = acf, type = type, n.used = sampleT, 
   #                           lag = lag, series = series, snames = colnames(x)), class = "acf")
   if (plot) {
