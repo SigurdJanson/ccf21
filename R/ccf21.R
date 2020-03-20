@@ -15,9 +15,12 @@
 #' 65 (1), p. 23-28.
 #' @examples
 .CorConf_Fisher <- function( r, n, ci = 0.95 ) {
-  if(missing(r)) return(NA)
+  if(missing(r)) stop("Pearson correlation 'r' required")
+  if(missing(n)) stop("Sample size 'n' required")
   if(any(r > 1) || any(r < -1)) 
-    stop("Fisher Z transformation is only defined for correlations (i.e. -1 <= r <= 1)")
+    stop("Correlations are only defined between -1 and 1")
+  if(any(ci > 1) || any(ci < 0)) 
+    stop("Confidence is only defined between 0 and 1")
   
   # Assume two-sided limits, i.e. use 0.975 instead 0.95
   cutoff <- qnorm( (ci+1)*0.5 )
@@ -34,12 +37,12 @@
                 (z + cutoff * sqrt(1/(n-3))) )
   # inverse fisher transform to get r back
   rci <- (exp(2*zci)-1) / (exp(2*zci)+1)
-  rci[rp1] <- c(1, 1)
-  rci[rm1] <- c(-1, -1)
+  rci[rp1,] <- c(1, 1)
+  rci[rm1,] <- c(-1, -1)
   
   return(rci)
 }
-
+print(.CorConf_Fisher( r = 0.5, n = 100, ci = 0.95))
 
 
 #' .Cor_ccf
