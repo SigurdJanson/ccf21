@@ -51,8 +51,8 @@ Sequence x: 1##################N\
 Sequence y: ....1##################M
 
 Option 1: simply cut\
-Sequence x:     ###############N\
-Sequence y:     1###############
+Sequence x:     ###############N\
+Sequence y:     1###############
 
 Option 2: fill it with '0' gives y\
 Sequence x: 1##################N\
