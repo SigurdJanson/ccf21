@@ -42,7 +42,7 @@
   
   return(rci)
 }
-print(.CorConf_Fisher( r = 0.5, n = 100, ci = 0.95))
+
 
 
 #' .Cor_ccf
@@ -67,7 +67,7 @@ print(.CorConf_Fisher( r = 0.5, n = 100, ci = 0.95))
   type <- match.arg(type)
   
   # CODE
-  if (anyNA(mean) && anyNA(stddev) && anyNA(n)) {
+  if (anyNA(mean) && anyNA(sd) && anyNA(n)) {
     if (type == "correlation")
       test <- cor(x, y) 
     else
@@ -89,7 +89,6 @@ print(.CorConf_Fisher( r = 0.5, n = 100, ci = 0.95))
   # Finish
   return(test)
 }
-
 
 
 
