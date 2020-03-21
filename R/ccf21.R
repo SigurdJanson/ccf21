@@ -216,22 +216,22 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
   if(!stationary && shiftaction == "cut") {
     lags <- (-lag.max):(+lag.max)
     r <- numeric(length(lags))
+    rindex <- 1
     x0 <- x[ seq(1, min(length(x), length(y))) ]
     y0 <- y[ seq(1, min(length(x), length(y))) ]
     for(l in lags) {
-      ys <- .Shift_ccf(y0, k, replace = FALSE)
-      minx <- 0          + ifelse(l <= 0, 1L, l)
-      maxx <- length(x0) - ifelse(l <= 0, l, 0L)
-      xs <- x0[minx, maxx]
-      r[l] <- .Cor_ccf(xs, ys, type)
+      ys <- .Shift_ccf(y0, l, replace = FALSE)
+      minx <- 1          + ifelse(l <= 0, 0L, l)
+      maxx <- length(x0) + ifelse(l <= 0, l, 0L)
+      xs <- x0[minx:maxx]
+      r[rindex] <- .Cor_ccf(xs, ys, type)
+      rindex <- rindex +1
     }
     .ccf <- array(r, dim = c(length(r), 1L, 1L))
-    .lag <- array(lag, dim = c(length(y), 1L, 1L)) / x.freq
+    .lag <- array(lags, dim = c(length(lags), 1L, 1L)) / x.freq
     .snames <- paste(c(deparse(substitute(x))[1L], deparse(substitute(y))[1L]), collapse = " & ")
-    acf.out <- structure(list(acf = .ccf, type = type, n.used = length(x0), 
-                              lag = .lag, series = "X", 
-                              snames = colnames(x)), 
-                         class = "acf", class = "acf2")
+    acf.out <- list(acf = .ccf, type = type, n.used = length(x0), 
+                    lag = .lag, series = "X", snames = colnames(x))
   }
   
   if(any(c("wrap", "replace") == shiftaction)) {
@@ -245,18 +245,18 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
     }
     lags <- (-lag.max):(+lag.max)
     r <- numeric(length(lags))
+    rindex <- 1
     replace <- ifelse("wrap", TRUE, replaceby)
     for(l in lags) {
-      ys <- .Shift_ccf(y, k, replace = replace)
-      r[l] <- .Cor_ccf(x, ys, type, n = st_n, mean = st_mean, sd = st_sd)
+      ys <- .Shift_ccf(y, l, replace = replace)
+      r[rindex] <- .Cor_ccf(x, ys, type, n = st_n, mean = st_mean, sd = st_sd)
+      rindex <- rindex +1
     }
     .ccf <- array(r, dim = c(length(r), 1L, 1L))
-    .lag <- array(lag, dim = c(length(y), 1L, 1L)) / x.freq
+    .lag <- array(lags, dim = c(length(y), 1L, 1L)) / x.freq
     .snames <- paste(c(deparse(substitute(x))[1L], deparse(substitute(y))[1L]), collapse = " & ")
-    acf.out <- structure(list(acf = .ccf, type = type, n.used = length(x0), 
-                              lag = .lag, series = "X", 
-                              snames = colnames(x)), 
-                         class = "acf", class = "acf2")
+    acf.out <- list(acf = .ccf, type = type, n.used = length(x0), 
+                    lag = .lag, series = "X", snames = colnames(x))
   }
 
   if("imprison" == shiftaction) {
@@ -276,30 +276,34 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
     }
     lags <- seq(1, length(x) - length(y), by = 1)
     r <- numeric(length(lags))
+    rindex <- 1
     for(l in lags) {
       ys <- x[seq(l, l+length(ys), by = 1)]
       xs <- x[seq(l, l+length(ys), by = 1)]
-      r[l] <- .Cor_ccf(xs, ys, type, n = st_n, mean = st_mean, sd = st_sd)
+      r[rindex] <- .Cor_ccf(xs, ys, type, n = st_n, mean = st_mean, sd = st_sd)
+      rindex <- rindex +1
     }
     .ccf <- array(r, dim = c(length(r), 1L, 1L))
     .lag <- array(lags, dim = c(length(y), 1L, 1L)) / x.freq
     .snames <- paste(c(deparse(substitute(x))[1L], deparse(substitute(y))[1L]), collapse = " & ")
-    acf.out <- structure(list(acf = .ccf, type = type, n.used = length(x0), 
-                              lag = .lag, series = "X", 
-                              snames = colnames(x)), 
-                         class = "acf", class = "acf2")
+    acf.out <- list(acf = .ccf, type = type, n.used = length(x0), 
+                    lag = .lag, series = "X", snames = colnames(x))
   }
   
   # FINISH
-  acf.out <- c(acf.out, shiftaction = shiftaction, stationary = stationary,
-               replacedby = replaceby)
+  acf.out <- structure( append(acf.out, 
+                               list(shiftaction = shiftaction, 
+                                    stationary = stationary,
+                                    replacedby = replaceby)),
+                        class = c("ccf", "acf"))
   
   if (plot) {
-    plot.acf(acf.out, ...)
+    plot(acf.out, ...) 
     invisible(acf.out)
   }
   else 
     return(acf.out)
 }
 
-#ccf(1:2, 1:2, lag.max = -1)
+x <-  result <- ccf( 1:10, 1:10, shiftaction = "cut", lag.max = 0 )
+#plot.acf(x)
