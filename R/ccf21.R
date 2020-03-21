@@ -141,9 +141,10 @@
 #' ccf
 #'## Open topics for full compatibility ###
 #', x/y "or an "acf" object.???"
-#' na.action ????
 #' demean???
 #' No wraparound value can be used at this time
+#' lags are returned as "number of samples" even for ts-objects when
+#' for time series it should be a time index.
 #' 
 #' @param x,y a univariate numeric vector or time series object.
 #' @param lag.max maximum lag at which to calculate the acf. 
@@ -157,22 +158,28 @@
 #' series. If \code{FALSE} plain correlations will be used.
 #' @param shiftaction 
 #' @param plot logical. If TRUE (the default) the ccf is plotted.
-#' @param na.action function to be called to handle missing values. na.pass can be used.
+#' @param na.action function to be called to handle missing values. 
+#' na.pass can be used.
 #' @param ... further arguments to be passed to 'plot'
 ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"), 
                  stationary = NULL, 
                  shiftaction = c("cut", "wrap", "replace", "imprison"),
+                 replacement = NULL,
                  plot = TRUE, na.action = na.fail, ...)  {
   # PRECONDITIONS & PREPARATIONS
   if (is.matrix(x) || is.matrix(y)) 
-    stop("univariate time series only.")
-  if ( missing(stationary) )
+    stop("Only univariate data is allowed")
+  x <- na.action(x)
+  y <- na.action(y)
+  if(na.action == na.fail && is.na(replacement)) 
+    stop("Cannot use 'replacement' NA when 'na.action' is fail")
+  if (missing(stationary))
       stationary <- (is.ts(x) || is.ts(y))
-  
+
   if (is.null(lag.max)) 
     lag.max <- floor(10 * (log10(sampleT) - log10(nser)))
   lag.max <- as.integer(min(lag.max, sampleT - 1L))
-  if (is.na(lag.max) || lag.max < 0) 
+  if (is.na(lag.max) || lag.max < 0) #TODO: not used with "imprison"
     stop("'lag.max' must be at least 0")
   
   type <- match.arg(type)
@@ -269,8 +276,9 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
     r <- numeric(length(lags))
     replace <- ifelse("wrap", TRUE, 66766) #TODO: 0 must be replaced by desired value
     for(l in lags) {
+      ys <- x[seq(l, l+length(ys), by = 1)]
       xs <- x[seq(l, l+length(ys), by = 1)]
-      r[l] <- .Cor_ccf(xs, y, type, n = st_n, mean = st_mean, sd = st_sd)
+      r[l] <- .Cor_ccf(xs, ys, type, n = st_n, mean = st_mean, sd = st_sd)
     }
     .ccf <- array(r, dim = c(length(r), 1L, 1L))
     .lag <- array(lag, dim = c(length(y), 1L, 1L))
