@@ -139,12 +139,8 @@
 
 
 #' ccf
-#'## Open topics for full compatibility ###
-#', x/y "or an "acf" object.???"
-#' demean???
-#' No wraparound value can be used at this time
-#' lags are returned as "number of samples" even for ts-objects when
-#' for time series it should be a time index.
+#' ## Open topics ###
+#' Confidence
 #' 
 #' @param x,y a univariate numeric vector or time series object.
 #' @param lag.max maximum lag at which to calculate the acf. 
@@ -158,29 +154,23 @@
 #' series. If \code{FALSE} plain correlations will be used.
 #' @param shiftaction 
 #' @param plot logical. If TRUE (the default) the ccf is plotted.
-#' @param na.action function to be called to handle missing values. 
+#' @param na.action function to be called to handle missing values.
 #' na.pass can be used.
 #' @param ... further arguments to be passed to 'plot'
 ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"), 
                  stationary = NULL, 
                  shiftaction = c("cut", "wrap", "replace", "imprison"),
-                 replacement = NULL,
+                 replaceby = NULL,
                  plot = TRUE, na.action = na.fail, ...)  {
   # PRECONDITIONS & PREPARATIONS
   if (is.matrix(x) || is.matrix(y)) 
-    stop("Only univariate data is allowed")
+    stop("Only univariate data is allowed.")
   x <- na.action(x)
   y <- na.action(y)
-  if (na.action == na.fail && is.na(replacement)) 
-    stop("Cannot use 'replacement' NA when 'na.action' is fail")
+  if (identical(na.action, na.fail) && identical(replaceby, NA)) 
+    stop("Cannot use 'replacement' NA when 'na.action' is fail.")
   if (missing(stationary))
-      stationary <- (is.ts(x) || is.ts(y))
-
-  if (is.null(lag.max)) 
-    lag.max <- floor(10 * (log10(sampleT) - log10(nser)))
-  lag.max <- as.integer(min(lag.max, sampleT - 1L))
-  if (is.na(lag.max) || lag.max < 0) #TODO: not used with "imprison"
-    stop("'lag.max' must be at least 0")
+    stationary <- (is.ts(x) || is.ts(y))
   
   type <- match.arg(type)
   
@@ -192,14 +182,24 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
     else
       shiftaction <- "cut"
   } else {
-    shiftaction <- match.arg(windowaction)
+    shiftaction <- match.arg(shiftaction)
     if(any(c("wrap", "replace") == shiftaction) && LenX != LenY)
       stop("Unequal length of 'x' and 'y' works only with 'cut' or 'imprison'.")
   }
-  if (shiftaction == "replace" && (missing(replacement) || is.null(replacement)))
+  if (shiftaction == "replace" && (missing(replaceby) || is.null(replaceby)))
     stop("If empty positions shall be 'replace'd by specified value, specify the value")
   
-  # RUN
+  if (is.null(lag.max) || is.na(lag.max)) {
+    lag.max <- floor(10 * log10(min(LenX, LenY)))
+  } else {
+    if (lag.max < 0)
+      stop("'lag.max' must be at least 0.")
+  }
+  lag.max <- as.integer(min(lag.max, min(LenX, LenY) - 1L))
+
+  # RUN: Cross-Correlate
+  x.freq <- frequency(x)
+
   if(stationary && shiftaction == "cut") {
     # Classic ccf call
     X <- ts.intersect(as.ts(x), as.ts(y))
@@ -226,7 +226,7 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
       r[l] <- .Cor_ccf(xs, ys, type)
     }
     .ccf <- array(r, dim = c(length(r), 1L, 1L))
-    .lag <- array(lag, dim = c(length(y), 1L, 1L))
+    .lag <- array(lag, dim = c(length(y), 1L, 1L)) / x.freq
     .snames <- paste(c(deparse(substitute(x))[1L], deparse(substitute(y))[1L]), collapse = " & ")
     acf.out <- structure(list(acf = .ccf, type = type, n.used = length(x0), 
                               lag = .lag, series = "X", 
@@ -245,13 +245,13 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
     }
     lags <- (-lag.max):(+lag.max)
     r <- numeric(length(lags))
-    replace <- ifelse("wrap", TRUE, replacement)
+    replace <- ifelse("wrap", TRUE, replaceby)
     for(l in lags) {
       ys <- .Shift_ccf(y, k, replace = replace)
       r[l] <- .Cor_ccf(x, ys, type, n = st_n, mean = st_mean, sd = st_sd)
     }
     .ccf <- array(r, dim = c(length(r), 1L, 1L))
-    .lag <- array(lag, dim = c(length(y), 1L, 1L))
+    .lag <- array(lag, dim = c(length(y), 1L, 1L)) / x.freq
     .snames <- paste(c(deparse(substitute(x))[1L], deparse(substitute(y))[1L]), collapse = " & ")
     acf.out <- structure(list(acf = .ccf, type = type, n.used = length(x0), 
                               lag = .lag, series = "X", 
@@ -282,7 +282,7 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
       r[l] <- .Cor_ccf(xs, ys, type, n = st_n, mean = st_mean, sd = st_sd)
     }
     .ccf <- array(r, dim = c(length(r), 1L, 1L))
-    .lag <- array(lag, dim = c(length(y), 1L, 1L))
+    .lag <- array(lags, dim = c(length(y), 1L, 1L)) / x.freq
     .snames <- paste(c(deparse(substitute(x))[1L], deparse(substitute(y))[1L]), collapse = " & ")
     acf.out <- structure(list(acf = .ccf, type = type, n.used = length(x0), 
                               lag = .lag, series = "X", 
@@ -290,8 +290,10 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
                          class = "acf", class = "acf2")
   }
   
-  
   # FINISH
+  acf.out <- c(acf.out, shiftaction = shiftaction, stationary = stationary,
+               replacedby = replaceby)
+  
   if (plot) {
     plot.acf(acf.out, ...)
     invisible(acf.out)
@@ -299,3 +301,5 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
   else 
     return(acf.out)
 }
+
+#ccf(1:2, 1:2, lag.max = -1)
