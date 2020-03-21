@@ -138,14 +138,30 @@
 }
 
 
-#'
-#'
-#'
+#' ccf
+#'## Open topics for full compatibility ###
+#', x/y "or an "acf" object.???"
+#' na.action ????
+#' demean???
+#' No wraparound value can be used at this time
 #' 
+#' @param x,y a univariate numeric vector or time series object.
+#' @param lag.max maximum lag at which to calculate the acf. 
+#' Default is 10*log10(N/m) where N is the number of observations 
+#' and m the number of series. Will be automatically limited 
+#' to one less than the number of observations in the series.
+#' @param type character string giving the type of ccf to be 
+#' computed. Allowed values are "correlation" (the default) or "covariance". 
+#' Will be partially matched.
+#' @param stationary Shall vectors be treated as if they were a stationary time
+#' series. If \code{FALSE} plain correlations will be used.
+#' @param shiftaction 
+#' @param plot logical. If TRUE (the default) the ccf is plotted.
+#' @param na.action function to be called to handle missing values. na.pass can be used.
+#' @param ... further arguments to be passed to 'plot'
 ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"), 
                  stationary = NULL, 
-                 protrusionaction = NULL, 
-                 windowaction = c("cut", "imprison"), # ignored if length(x) == length(y)
+                 shiftaction = c("cut", "wrap", "replace", "imprison"),
                  plot = TRUE, na.action = na.fail, ...)  {
   # PRECONDITIONS & PREPARATIONS
   if (is.matrix(x) || is.matrix(y)) 
@@ -163,16 +179,20 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
   
   LenX <- length(x)
   LenY <- length(y)
-  if (LenX != LenY && missing(windowaction)) 
-    stop("'windowaction' is not set despite unequal length of 'x' and 'y'.")
-  if (missing(windowaction))
-    windowaction <- "cut"
-  else
-    windowaction <- match.arg(windowaction)
+  if(missing(shiftaction)) { # set defaults
+    if (LenX != LenY)
+      shiftaction <- "imprison"
+    else
+      shiftaction <- "cut"
+  } else {
+    shiftaction <- match.arg(windowaction)
+    if(any(c("wrap", "replace") == shiftaction) && LenX != LenY)
+      stop("Unequal length of 'x' and 'y' works only with 'cut' or 'imprison'.")
+  }
   
   # RUN
-  # Classic ccf call
-  if(stationary && missing(protrusionaction) && windowaction == "cut") {
+  if(stationary && shiftaction == "cut") {
+    # Classic ccf call
     X <- ts.intersect(as.ts(x), as.ts(y))
     colnames(X) <- c(deparse(substitute(x))[1L], deparse(substitute(y))[1L])
     acf.out <- stats::acf(X, lag.max = lag.max, plot = FALSE, type = type, 
@@ -184,12 +204,85 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
     acf.out$snames <- paste(acf.out$snames, collapse = " & ")
   }
   
-  if(!stationary && missing(protrusionaction) && windowaction == "cut") {
+  if(!stationary && shiftaction == "cut") {
+    lags <- (-lag.max):(+lag.max)
+    r <- numeric(length(lags))
+    x0 <- x[ seq(1, min(length(x), length(y))) ]
+    y0 <- y[ seq(1, min(length(x), length(y))) ]
+    for(l in lags) {
+      ys <- .Shift_ccf(y0, k, replace = FALSE)
+      minx <- 0          + ifelse(l <= 0, 1L, l)
+      maxx <- length(x0) - ifelse(l <= 0, l, 0L)
+      xs <- x0[minx, maxx]
+      r[l] <- .Cor_ccf(xs, ys, type)
+    }
+    .ccf <- array(r, dim = c(length(r), 1L, 1L))
+    .lag <- array(lag, dim = c(length(y), 1L, 1L))
+    .snames <- paste(c(deparse(substitute(x))[1L], deparse(substitute(y))[1L]), collapse = " & ")
+    acf.out <- structure(list(acf = .ccf, type = type, n.used = length(x0), 
+                              lag = .lag, series = "X", 
+                              snames = colnames(x)), 
+                         class = "acf", class = "acf2")
   }
   
+  if(any(c("wrap", "replace") == shiftaction)) {
+    if(stationary) {
+      st_n    <- length(x)
+      st_mean <- c(mean(x), mean(y))
+      st_sd   <- c(sd(x),   sd(y))
+    } else {
+      st_n <- NA
+      st_mean <- st_sd <- c(NA, NA)
+    }
+    lags <- (-lag.max):(+lag.max)
+    r <- numeric(length(lags))
+    replace <- ifelse("wrap", TRUE, 123456) #TODO: 0 must be replaced by desired value
+    for(l in lags) {
+      ys <- .Shift_ccf(y, k, replace = FALSE)
+      r[l] <- .Cor_ccf(x, ys, type, n = st_n, mean = st_mean, sd = st_sd)
+    }
+    .ccf <- array(r, dim = c(length(r), 1L, 1L))
+    .lag <- array(lag, dim = c(length(y), 1L, 1L))
+    .snames <- paste(c(deparse(substitute(x))[1L], deparse(substitute(y))[1L]), collapse = " & ")
+    acf.out <- structure(list(acf = .ccf, type = type, n.used = length(x0), 
+                              lag = .lag, series = "X", 
+                              snames = colnames(x)), 
+                         class = "acf", class = "acf2")
+  }
+
+  if("imprison" == shiftaction) {
+    if(stationary) {
+      st_n    <- length(x)
+      st_mean <- c(mean(x), mean(y))
+      st_sd   <- c(sd(x),   sd(y))
+    } else {
+      st_n <- NA
+      st_mean <- st_sd <- c(NA, NA)
+    }
+    # x is assumed to be the longer vectors. Switch if necessary
+    if(length(x) < length(y)) {
+      xo <- x
+      x  <- y
+      y  <- xo
+    }
+    lags <- seq(1, length(x) - length(y), by = 1)
+    r <- numeric(length(lags))
+    replace <- ifelse("wrap", TRUE, 66766) #TODO: 0 must be replaced by desired value
+    for(l in lags) {
+      xs <- x[seq(l, l+length(ys), by = 1)]
+      r[l] <- .Cor_ccf(xs, y, type, n = st_n, mean = st_mean, sd = st_sd)
+    }
+    .ccf <- array(r, dim = c(length(r), 1L, 1L))
+    .lag <- array(lag, dim = c(length(y), 1L, 1L))
+    .snames <- paste(c(deparse(substitute(x))[1L], deparse(substitute(y))[1L]), collapse = " & ")
+    acf.out <- structure(list(acf = .ccf, type = type, n.used = length(x0), 
+                              lag = .lag, series = "X", 
+                              snames = colnames(x)), 
+                         class = "acf", class = "acf2")
+  }
+  
+  
   # FINISH
-  # acf.out <- structure(list(acf = acf, type = type, n.used = sampleT, 
-  #                           lag = lag, series = series, snames = colnames(x)), class = "acf")
   if (plot) {
     plot.acf(acf.out, ...)
     invisible(acf.out)
