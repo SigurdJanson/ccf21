@@ -171,7 +171,7 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
     stop("Only univariate data is allowed")
   x <- na.action(x)
   y <- na.action(y)
-  if(na.action == na.fail && is.na(replacement)) 
+  if (na.action == na.fail && is.na(replacement)) 
     stop("Cannot use 'replacement' NA when 'na.action' is fail")
   if (missing(stationary))
       stationary <- (is.ts(x) || is.ts(y))
@@ -196,6 +196,8 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
     if(any(c("wrap", "replace") == shiftaction) && LenX != LenY)
       stop("Unequal length of 'x' and 'y' works only with 'cut' or 'imprison'.")
   }
+  if (shiftaction == "replace" && (missing(replacement) || is.null(replacement)))
+    stop("If empty positions shall be 'replace'd by specified value, specify the value")
   
   # RUN
   if(stationary && shiftaction == "cut") {
@@ -243,9 +245,9 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
     }
     lags <- (-lag.max):(+lag.max)
     r <- numeric(length(lags))
-    replace <- ifelse("wrap", TRUE, 123456) #TODO: 0 must be replaced by desired value
+    replace <- ifelse("wrap", TRUE, replacement)
     for(l in lags) {
-      ys <- .Shift_ccf(y, k, replace = FALSE)
+      ys <- .Shift_ccf(y, k, replace = replace)
       r[l] <- .Cor_ccf(x, ys, type, n = st_n, mean = st_mean, sd = st_sd)
     }
     .ccf <- array(r, dim = c(length(r), 1L, 1L))
@@ -274,7 +276,6 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
     }
     lags <- seq(1, length(x) - length(y), by = 1)
     r <- numeric(length(lags))
-    replace <- ifelse("wrap", TRUE, 66766) #TODO: 0 must be replaced by desired value
     for(l in lags) {
       ys <- x[seq(l, l+length(ys), by = 1)]
       xs <- x[seq(l, l+length(ys), by = 1)]
