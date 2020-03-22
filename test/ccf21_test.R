@@ -221,9 +221,9 @@ test_that("ccf21: compare with stats::ccf", {
   expect_identical(o$type, e$type)
   
   # Sinus, covariance
-  e <- stats::ccf(x, y, type = "covariance", plot = FALSE)
+  e <- stats::ccf(x, y, type = "covariance", demean = FALSE, plot = FALSE)
   o <- ccf(x, y, type = "covariance", stationary = TRUE, plot = FALSE)
-  expect_equal(o$acf[,,1], e$acf[,,1])
+  expect_equal(o$acf[,,1], e$acf[,,1]) #1######################################################
   
   # Sinus, correlation, frequency != 1
   x <- ts(sin(t), frequency = 0.34858)
@@ -236,7 +236,9 @@ test_that("ccf21: compare with stats::ccf", {
   
   # Random data
   x <- rnorm(100)
+  #x <- x - mean(x)
   y <- rnorm(100)
+  #y <- y - mean(y)
   e <- stats::ccf(x, y, plot = FALSE)
   o <- ccf(x, y, stationary = TRUE, plot = FALSE) # set stationary explicitely!
   
@@ -246,6 +248,6 @@ test_that("ccf21: compare with stats::ccf", {
   # Random data, covariance
   e <- stats::ccf(x, y, type = "covariance", plot = FALSE)
   o <- ccf(x, y, type = "covariance", stationary = TRUE, plot = FALSE)
-  expect_equal(o$acf[,,1], e$acf[,,1])
+  expect_equal(o$acf[,,1], e$acf[,,1]) #2######################################################
 })
 

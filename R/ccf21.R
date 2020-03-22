@@ -138,6 +138,7 @@
 }
 
 
+
 #' ccf
 #' ## Open topics ###
 #' Confidence
@@ -164,6 +165,7 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
                  shiftaction = c("cut", "wrap", "replace", "imprison"),
                  replaceby = NULL,
                  plot = TRUE, na.action = na.fail, ...)  {
+  
   # PRECONDITIONS & PREPARATIONS
   if (is.matrix(x) || is.matrix(y)) 
     stop("Only univariate data is allowed.")
@@ -206,20 +208,16 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
   # RUN: Cross-Correlate
   x.freq <- frequency(x)
 
-  if(stationary && shiftaction == "cut") {
-    # Classic ccf call
-    X <- ts.intersect(as.ts(x), as.ts(y))
-    colnames(X) <- c(deparse(substitute(x))[1L], deparse(substitute(y))[1L])
-    acf.out <- stats::acf(X, lag.max = lag.max, plot = FALSE, type = type, 
-                   na.action = na.action)
-    lag <- c(rev(acf.out$lag[-1, 2, 1]), acf.out$lag[, 1, 2])
-    y <- c(rev(acf.out$acf[-1, 2, 1]), acf.out$acf[, 1, 2])
-    acf.out$acf <- array(y, dim = c(length(y), 1L, 1L))
-    acf.out$lag <- array(lag, dim = c(length(y), 1L, 1L))
-    acf.out$snames <- paste(acf.out$snames, collapse = " & ")
-  }
   
-  if(!stationary && shiftaction == "cut") {
+  if(shiftaction == "cut") {
+    if(stationary) {
+      st_n    <- length(x)
+      st_mean <- c(mean(x), mean(y))
+      st_sd   <- c(sd(x),   sd(y))
+    } else {
+      st_n <- NA
+      st_mean <- st_sd <- c(NA, NA)
+    }
     lags <- (-lag.max):(+lag.max)
     r <- numeric(length(lags))
     rindex <- 1
@@ -230,15 +228,13 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
       minx <- 1          + ifelse(l <= 0, 0L, l)
       maxx <- length(x0) + ifelse(l <= 0, l, 0L)
       xs <- x0[minx:maxx]
-      r[rindex] <- .Cor_ccf(xs, ys, type)
+      r[rindex] <- .Cor_ccf(xs, ys, type, n = st_n, mean = st_mean, sd = st_sd)
       rindex <- rindex +1
     }
-    .ccf <- array(r, dim = c(length(r), 1L, 1L))
-    .lag <- array(lags, dim = c(length(lags), 1L, 1L)) / x.freq
-    .snames <- paste(c(deparse(substitute(x))[1L], deparse(substitute(y))[1L]), collapse = " & ")
-    acf.out <- list(acf = .ccf, type = type, n.used = length(x0), 
-                    lag = .lag, series = "X", snames = .snames)
+    .lag   <- array(lags, dim = c(length(lags), 1L, 1L)) / x.freq
+    n.used <- length(x0)
   }
+  
   
   if(any(c("wrap", "replace") == shiftaction)) {
     if(stationary) {
@@ -258,13 +254,12 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
       r[rindex] <- .Cor_ccf(x, ys, type, n = st_n, mean = st_mean, sd = st_sd)
       rindex <- rindex +1
     }
-    .ccf <- array(r, dim = c(length(r), 1L, 1L))
     .lag <- array(lags, dim = c(length(lags), 1L, 1L)) / x.freq
-    .snames <- paste(c(deparse(substitute(x))[1L], deparse(substitute(y))[1L]), collapse = " & ")
-    acf.out <- list(acf = .ccf, type = type, n.used = length(x), 
-                    lag = .lag, series = "X", snames = .snames)
+    n.used  <- length(x)
   }
 
+  
+  
   if("imprison" == shiftaction) {
     if(stationary) {
       st_n    <- length(x)
@@ -289,18 +284,22 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
       r[rindex] <- .Cor_ccf(xs, y, type, n = st_n, mean = st_mean, sd = st_sd)
       rindex <- rindex +1
     }
-    .ccf <- array(r, dim = c(length(r), 1L, 1L))
-    .lag <- array(lags-1, dim = c(length(lags), 1L, 1L)) / x.freq # correct lags by 1
-    .snames <- paste(c(deparse(substitute(x))[1L], deparse(substitute(y))[1L]), collapse = " & ")
-    acf.out <- list(acf = .ccf, type = type, n.used = length(x), 
-                    lag = .lag, series = "X", snames = .snames)
+    .lag    <- array(lags-1, dim = c(length(lags), 1L, 1L)) / x.freq # correct lags by 1
+    n.used  <- length(x)
   }
   
+  
   # FINISH
-  acf.out <- structure( append(acf.out, 
-                               list(shiftaction = shiftaction, 
-                                    stationary = stationary,
-                                    replacedby = replaceby)),
+  acf.out <- structure( list(acf = array(r, dim = c(length(r), 1L, 1L)), 
+                             type = type, 
+                             n.used = n.used,
+                             lag = .lag, 
+                             series = "X", 
+                             snames = paste(c(deparse(substitute(x))[1L], 
+                                              deparse(substitute(y))[1L]), collapse = " & "),
+                             shiftaction = shiftaction, 
+                             stationary = stationary,
+                             replacedby = replaceby),
                         class = c("ccf", "acf"))
   
   if (plot) {
