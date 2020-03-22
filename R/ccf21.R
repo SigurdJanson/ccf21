@@ -139,27 +139,56 @@
 
 
 
+# ## Open topics ###
+# Confidence
 #' ccf
-#' ## Open topics ###
-#' Confidence
-#' "not all series have the same frequency"
+#' `ccf` computes the cross-correlation or cross-covariance of two univariate
+#' series.
+#' 
 #' 
 #' @param x,y a univariate numeric vector or time series object.
 #' @param lag.max maximum lag at which to calculate the acf. 
-#' Default is 10*log10(N/m) where N is the number of observations 
-#' and m the number of series. Will be automatically limited 
+#' Default is `10*log10(N/m)` where `N` is the number of observations 
+#' and `m` the number of series. Will be automatically limited 
 #' to one less than the number of observations in the series.
-#' @param type character string giving the type of ccf to be 
+#' @param type character string giving the type of `ccf` to be 
 #' computed. Allowed values are "correlation" (the default) or "covariance". 
 #' Will be partially matched.
 #' @param stationary Shall vectors be treated as if they were a stationary time
-#' series. If \code{FALSE} plain correlations will be used.
+#' series. If `FALSE` plain correlations will be used.
 #' @param shiftaction How to handle values that are shifted out of range. 
 #' See details.
-#' @param plot logical. If TRUE (the default) the ccf is plotted.
+#' @param plot logical. If `TRUE` (the default) the `ccf` is plotted.
 #' @param na.action function to be called to handle missing values.
-#' na.pass can be used.
-#' @param ... further arguments to be passed to 'plot'
+#' `na.pass` can be used.
+#' @param ... further arguments to be passed to `plot`.
+#' @return An object of class "`ccf`" and "`acf`", which is a list with 
+#' the following elements:
+#' \describe{
+#'   \item{lag}{A three dimensional array containing the lags at 
+#'   which the `ccf` is estimated. Values for ccf are stored in `lag[,,1]`.
+#'   This is due to compatibility reasons.}
+#'   \item{acf}{An array with the same dimensions as `lag` containing 
+#'   the estimated ccf.}
+#'   \item{type}{The type of correlation (same as the `type` argument).}
+#'   \item{n.used}{The number of observations in sequence.}
+#'   \item{series}{The name of the series x. Is always `X` and can be ignored.
+#'   It has been kept due to compatibility reasons.}
+#'   \item{snames}{The series names.}
+#'   \item{shiftaction}{The action that handled values being moved 
+#'   out of range (same as the `shiftaction` argument).}
+#'   \item{stationary}{Are the cross-correlations in this structure
+#'   based on stationarity assumption. `TRUE`/`FALSE` (same as the `stationary` 
+#'   argument).}
+#'   \item{replacedby}{The value that has been used in case of `shiftaction = 
+#'   "replace"` (same as the `replaceby` argument).}
+#' }
+#' The lag `k` value returned by `ccf(x, y)` estimates the correlation 
+#' between `x[t+k]` and `y[t]`.
+#' 
+#' The result is returned invisibly if plot is TRUE.
+#' @seealso [stats::ccf()]
+#' @export
 ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"), 
                  stationary = NULL, 
                  shiftaction = c("cut", "wrap", "replace", "imprison"),
@@ -169,6 +198,7 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
   # PRECONDITIONS & PREPARATIONS
   if (is.matrix(x) || is.matrix(y)) 
     stop("Only univariate data is allowed.")
+  
   if (is.ts(x) && is.ts(y)) 
     if(abs(frequency(x) - frequency(y)) > getOption("ts.eps")*0.5)
       stop("The time series have different frequencies")
@@ -176,6 +206,7 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
   y <- na.action(y)
   if (identical(na.action, na.fail) && identical(replaceby, NA)) 
     stop("Cannot use 'replacement' NA when 'na.action' is fail.")
+  
   if (missing(stationary))
     stationary <- (is.ts(x) || is.ts(y))
   
