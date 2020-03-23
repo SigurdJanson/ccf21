@@ -18,6 +18,7 @@
 #' 
 #' @export
 #' @author Jan Seifert
+#' @seealso  [base::summary()]
 #' @examples summary(ccf(1:10, 10:1))
 summary.ccf <- function(obj, digits) {
   if (is.null(obj)) return(NULL)
@@ -48,15 +49,16 @@ summary.ccf <- function(obj, digits) {
 
 
 #' print.summaryccf
-#'
+#' Prints the summary of a `ccf` object.
 #' @param x an object of class "`summaryccf`", usually, a result of 
 #' a call to `summary.ccf`.
 #' @param digits the number of significant digits to use when printing.
 #'
 #' @export
 #'
+#' @seealso  [base::print()]
 #' @author Jan Seifert
-#' @examples
+#' @examples print( summary(ccf(1:10, 10:1)) )
 print.summaryccf <- function (x, digits = max(3, getOption("digits") - 3L)) {
   type <- match(x$type, c("correlation", "covariance"))
   abbrev <- c("Cor", "Cov")
@@ -97,5 +99,5 @@ print.summaryccf <- function (x, digits = max(3, getOption("digits") - 3L)) {
 
 
 
-y <- summary(o)
-print(y)
+#y <- summary(o)
+#print(y)

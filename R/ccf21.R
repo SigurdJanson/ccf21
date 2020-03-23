@@ -60,6 +60,8 @@
 #' series. To be treated as non-stationary, n, mean and sd must ALL be NA.
 #' In this case, the functions determines mean, sd, and n based on x and y.
 #' @return The correlation between x and y
+#' @author Jan Seifert
+#' @seealso [stats::cor()] [stats::cov()]
 .Cor_ccf <- function(x, y, type = c("correlation", "covariance"),
                      n = NA, mean = c(NA, NA), sd = c(NA, NA)) {
   # PRECONDITIONS
@@ -106,6 +108,7 @@
 #' * \code{replace = TRUE}:  wrap it back assuming the sequence is circular.
 #' * \code{replace = as.double(anyhting)}: or fill it with data.
 #' @return A new shifted vector. 
+#' @author Jan Seifert
 .Shift_ccf <- function(y, k, replace = FALSE) {
   # PRECONDITIONS
   if(k == 0) return(y)
@@ -139,12 +142,9 @@
 
 
 
-# ## Open topics ###
-# Confidence
 #' ccf
 #' `ccf` computes the cross-correlation or cross-covariance of two univariate
 #' series.
-#' 
 #' 
 #' @param x,y a univariate numeric vector or time series object.
 #' @param lag.max maximum lag at which to calculate the acf. 
@@ -188,6 +188,7 @@
 #' 
 #' The result is returned invisibly if plot is TRUE.
 #' @seealso [stats::ccf()]
+#' @author Jan Seifert
 #' @export
 ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"), 
                  stationary = NULL, 
@@ -341,6 +342,6 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
     return(acf.out)
 }
 
-# x <- ccf( rep(1:2, 10), rep(c(1, 1, 2, 2), 5), shiftaction = "replace", 
-#           lag.max = 8, replaceby = NA, na.action = na.pass )
+# x <- ccf( rep(1:2, 10), rep(c(1, 1, 2, 2), 5), shiftaction = "cut", 
+#           lag.max = 8, na.action = na.pass )
 #plot.acf(x)
