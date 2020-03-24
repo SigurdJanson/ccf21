@@ -1,7 +1,7 @@
 # ccf21
 An enhanced implementation of R's cross-correlation function ``ccf``.
 
-== Goals
+## Goals
 
 Main goal is to write a new function that is better than the old one by achieving these sub-goals.
 * Offer a switch to use simple correlations dropping the stationarity assumption of time series.
@@ -13,11 +13,12 @@ Main goal is to write a new function that is better than the old one by achievin
 All this should be achieved without doing anything not compatible to the existing functions or S3 classes. New data structures should work with old functions and new functions should be able to read old data structures.
 
 
-== Stationarity Assumption
+## Stationarity Assumption
+
 TBD
 
 
-== Sequences of Different Lengths
+## Sequences of Different Lengths
 
 When one sequence (y) is shorter than the other (Y) the function should use this instead of simply cutting the longer sequence. That is what ccf does at the time. Instead it should move the shorter sequence from the lower end to the upper end. And, of course, correlate both sequences at each step. This approach is called "imprison". Alternatively, "cut" shall be still available as option.
 
@@ -41,7 +42,7 @@ Sequence y:                 ####
 
 
 
-== Shifting Vectors 
+## Shifting Vectors 
 
 Sequence x:   1##################N\
 Sequence y: ->1##################M
