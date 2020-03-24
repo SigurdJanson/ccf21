@@ -40,6 +40,8 @@
   rci[rp1,] <- c(1, 1)
   rci[rm1,] <- c(-1, -1)
   
+  colnames(rci) <- c("lower", "upper")
+  rownames(rci) <- r
   return(rci)
 }
 
@@ -193,7 +195,7 @@
 ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"), 
                  stationary = NULL, 
                  shiftaction = c("cut", "wrap", "replace", "imprison"),
-                 replaceby = NULL,
+                 replaceby = NULL, ci = NULL,
                  plot = TRUE, na.action = na.fail, ...)  {
   
   # PRECONDITIONS & PREPARATIONS
@@ -236,6 +238,9 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
   }
   lag.max <- as.integer(min(lag.max, min(LenX, LenY) - 1L))
 
+  if (is.numeric(ci)) {
+    if (ci < 0 || ci > 1) stop("Confidence 'ci' must be between 0 and 1.")
+  }
   
   # RUN: Cross-Correlate
   x.freq <- frequency(x)
@@ -251,7 +256,8 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
       st_mean <- st_sd <- c(NA, NA)
     }
     lags <- (-lag.max):(+lag.max)
-    r <- numeric(length(lags))
+    r <- numeric(length(lags)) # placeholder for correlation/covariances
+    nr <- numeric(length(lags)) # placeholder for sample size of each r
     rindex <- 1
     x0 <- x[ seq(1, min(length(x), length(y))) ]
     y0 <- y[ seq(1, min(length(x), length(y))) ]
@@ -261,6 +267,7 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
       maxx <- length(x0) + ifelse(l <= 0, l, 0L)
       xs <- x0[minx:maxx]
       r[rindex] <- .Cor_ccf(xs, ys, type, n = st_n, mean = st_mean, sd = st_sd)
+      nr[rindex] <- length(xs)
       rindex <- rindex +1
     }
     .lag   <- array(lags, dim = c(length(lags), 1L, 1L)) / x.freq
@@ -278,12 +285,14 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
       st_mean <- st_sd <- c(NA, NA)
     }
     lags <- (-lag.max):(+lag.max)
-    r <- numeric(length(lags))
+    r <- numeric(length(lags)) # placeholder for correlation/covariances
+    nr <- numeric(length(lags)) # placeholder for sample size of each r
     rindex <- 1
     replace <- ifelse(shiftaction == "wrap", TRUE, replaceby)
     for(l in lags) {
       ys <- .Shift_ccf(y, l, replace = replace)
       r[rindex] <- .Cor_ccf(x, ys, type, n = st_n, mean = st_mean, sd = st_sd)
+      nr[rindex] <- length(x)
       rindex <- rindex +1
     }
     .lag <- array(lags, dim = c(length(lags), 1L, 1L)) / x.freq
@@ -308,18 +317,23 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
       y  <- xo
     }
     lags <- seq(1, length(x) - length(y), by = 1)
-    r <- numeric(length(lags))
+    r <- numeric(length(lags)) # placeholder for correlation/covariances
+    nr <- numeric(length(lags)) # placeholder for sample size of each r
     rindex <- 1
     for(l in lags) {
       #ys <- y#[seq(l, l+length(ys), by = 1)]
       xs <- x[seq(l, l+length(y)-1, by = 1)]
       r[rindex] <- .Cor_ccf(xs, y, type, n = st_n, mean = st_mean, sd = st_sd)
+      nr[rindex] <- length(xs)
       rindex <- rindex +1
     }
     .lag    <- array(lags-1, dim = c(length(lags), 1L, 1L)) / x.freq # correct lags by 1
     n.used  <- length(x)
   }
   
+  if(is.numeric(ci)) {
+    ci <- .CorConf_Fisher( r, nr, ci )
+  }
   
   # FINISH
   acf.out <- structure( list(acf = array(r, dim = c(length(r), 1L, 1L)), 
@@ -329,6 +343,8 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
                              series = "X", 
                              snames = paste(c(deparse(substitute(x))[1L], 
                                               deparse(substitute(y))[1L]), collapse = " & "),
+                             acf.n = nr,
+                             acf.ci = ci,
                              shiftaction = shiftaction, 
                              stationary = stationary,
                              replacedby = replaceby),

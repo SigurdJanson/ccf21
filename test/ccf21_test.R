@@ -1,6 +1,8 @@
 library(testthat)
 source("../R/ccf21.R")
 
+# TODO
+# acf.ci
 
 test_that("ccf21: PRECONDITIONS", {
   # Check if matrices throw an error
@@ -50,7 +52,8 @@ test_that("ccf21: shiftaction = \"cut\"", {
   result <- ccf( 1:10, 1:10, shiftaction = "cut", lag.max = 5 )
   expect_s3_class(result, c("ccf", "acf"), exact = TRUE)
   expect_equal(result$acf[,,1], rep(1, 11))
-  expect_equal(result$lag[,,1], -5:5)
+  expect_equal(result$lag[,,1], -5L:5L)
+  expect_equal(result$acf.n, c(5:9, 10, 9:5))
   expect_identical(result$stationary, FALSE)
   expect_null(result$replacedby)
   expect_identical(result$n.used, 10L)
@@ -64,6 +67,7 @@ test_that("ccf21: shiftaction = \"cut\"", {
                   9.166666666667,                        # lag = 0
                   rev(c(2.5, 3.5, 4.66666666666667, 6, 7.5)))) # positive
   expect_equal(result$lag[,,1], -5:5)
+  expect_equal(result$acf.n, c(5:9, 10, 9:5))
   expect_identical(result$stationary, FALSE)
   expect_null(result$replacedby)
   expect_identical(result$n.used, 10L)
@@ -74,6 +78,7 @@ test_that("ccf21: shiftaction = \"cut\"", {
   expect_s3_class(result, c("ccf", "acf"), exact = TRUE)
   expect_equal(result$acf[,,1], rep(1, 7))
   expect_equal(result$lag[,,1], -3:3)
+  expect_equal(result$acf.n, c(7:9, 10, 9:7))
   expect_identical(result$stationary, FALSE)
   expect_null(result$replacedby)
   expect_identical(result$n.used, 10L)
@@ -87,6 +92,7 @@ test_that("ccf21: shiftaction = \"cut\"", {
                   9.166666666667,                    # lag = 0
                   rev(c(4.66666666666667, 6, 7.5)))) # positive
   expect_equal(result$lag[,,1], -3:3)
+  expect_equal(result$acf.n, c(7:9, 10, 9:7))
   expect_identical(result$stationary, FALSE)
   expect_null(result$replacedby)
   expect_identical(result$n.used, 10L)
@@ -101,6 +107,7 @@ test_that("ccf21: shiftaction = \"cut\"", {
   expect_s3_class(result, c("ccf", "acf"), exact = TRUE)
   expect_equal(result$acf[,,1], rep(1, 11))
   expect_equal(result$lag[,,1], seq(-2.5, 2.5, by = 0.5))
+  expect_equal(result$acf.n, c(5:9, 10, 9:5))
   # - Non-stationary - frequency < 1
   x <- ts(1:10, frequency = 0.1)
   y <- ts(1:10, frequency = 0.1)
@@ -108,6 +115,7 @@ test_that("ccf21: shiftaction = \"cut\"", {
   expect_s3_class(result, c("ccf", "acf"), exact = TRUE)
   expect_equal(result$acf[,,1], rep(1, 11))
   expect_equal(result$lag[,,1], seq(-50, 50, by = 10))
+  expect_equal(result$acf.n, c(5:9, 10, 9:5))
 })
 
 
@@ -117,6 +125,7 @@ test_that("ccf21: shiftaction = \"wrap\"", {
   expect_s3_class(result, c("ccf", "acf"), exact = TRUE)
   expect_equal(result$acf[,,1], rep(0, 19))
   expect_equal(result$lag[,,1], -9:9)
+  expect_equal(result$acf.n, rep(20, 19))
   expect_identical(result$stationary, FALSE)
   expect_null(result$replacedby)
   expect_identical(result$n.used, 20L)
@@ -154,6 +163,7 @@ test_that("ccf21: shiftaction = \"replace\"", {
   expect_equal(result$acf[,,1], e)
   expect_s3_class(result, c("ccf", "acf"), exact = TRUE)
   expect_equal(result$lag[,,1], -4:4)
+  expect_equal(result$acf.n, rep(5, 9))
   expect_identical(result$stationary, FALSE)
   expect_identical(result$replacedby, 0L)
   expect_identical(result$n.used, 5L)
@@ -186,6 +196,7 @@ test_that("ccf21: shiftaction = \"imprison\"", {
   expect_s3_class(result, c("ccf", "acf"), exact = TRUE)
   expect_equal(result$acf[,,1], rep(0, 16))
   expect_equal(result$lag[,,1], 0:15)
+  expect_equal(result$acf.n, rep(4, 16))
   expect_identical(result$stationary, FALSE)
   expect_null(result$replacedby)
   expect_identical(result$n.used, 20L)
@@ -215,6 +226,8 @@ test_that("ccf21: compare with stats::ccf", {
   expect_s3_class(o, c("ccf", "acf"), exact = TRUE)
   expect_equal(o$acf[,,1], e$acf[,,1])
   expect_equal(o$lag[,,1], e$lag[,,1])
+  expect_equal(o$acf.n, c( seq(100-(length(o$acf)-1)/2, 99, by=1), 100, 
+                                seq(99, 100-(length(o$acf)-1)/2, by=-1) ))
   expect_identical(o$stationary, TRUE)
   expect_null(o$replacedby)
   expect_identical(o$n.used, e$n.used)
