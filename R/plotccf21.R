@@ -1,10 +1,5 @@
 library(ggplot2)
 
-# Open questions
-# - same for ci-type?
-# - ...?
-# - sub
-
 #' plot.ccf
 #' Plot method for objects of class "`ccf`".
 #' @param x an object of class `ccf`.
@@ -19,23 +14,23 @@ library(ggplot2)
 #' @param ci.col colour to plot the confidence interval lines.
 #' @param ci.type should the confidence limits assume a white noise 
 #' input or for lag `k` an `MA(k-1)` input? Can be abbreviated.
-#' @param max.mfrow Obsolete.
-#' @param ask Obsolete.
 #' @param mar Numerical vector of the form `c(bottom, left, top, right)` 
 #' which gives the number of text lines of margin.
+#' @param cex.main Default size for the title will be multiplied with `cex.main`
+#' to adjust the size.
+#' @param max.mfrow Obsolete.
+#' @param ask Obsolete.
 #' @param oma Obsolete.
 #' @param mgp Obsolete.
 #' @param xpd Obsolete.
-#' @param cex.main Default size for the title will be multiplied with `cex.main`
-#' to adjust the size.
 #' @param verbose Obsolete.
-#' @param ... graphics parameters to be passed to the plotting routines.
+#' @param ... Obsolete.
 #' @note The white noise option for confidence intervals is probably misleading.
 #' It is based on an uncorrelated series and should be treated with appropriate caution. 
 #' It is only kept here for compatibility reasons. 
 #' 
-#' This implementation dropped the `verbose` option. It is in the list 
-#' of arguments only for compatibility reasons.
+#' This implementation drops several arguments. They stay only for
+#' only for compatibility reasons but will be ignored.
 #' @seealso `[stats::plot.acf()]` `[ggplot2::ggplot()]` 
 #' `[grapics::plot()]` for type argument.
 #' @author Jan Seifert
@@ -62,6 +57,7 @@ plot.ccf <- function(x, ci = 0.95, type = "h",
       stop("not implemented, yet") #TODO: create ci-line from data
     }
   }
+  if(!is.numeric(cex.main)) cex.main <- 1
 
   # RUN
   if (is.null(ylim)) 
@@ -120,10 +116,8 @@ plot.ccf <- function(x, ci = 0.95, type = "h",
   }
   #
   
-  
-  
   invisible(g)
 }
 
-p <- plot(o, ci.type = "white", type = "h", sub = "YEAH!")
-p
+#p <- plot(o, ci.type = "white", type = "h", sub = "YEAH!")
+#print(p)
