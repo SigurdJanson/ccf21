@@ -37,10 +37,12 @@ summary.ccf <- function(obj, digits) {
   sumry$range  <- range(obj$acf)
   # Maximum/minimum correlation at which lags?
   absval <- abs(obj$acf)
-  sumry$min    <- min(absval)
+  sumry$min    <- obj$acf[ which.min(absval) ]
   sumry$minpos <- obj$lag[ which.min(absval) ]
-  sumry$max    <- max(absval)
+  sumry$minci  <- obj$acf.ci[ which.min(absval), ]
+  sumry$max    <- obj$acf[ which.max(absval) ]
   sumry$maxpos <- obj$lag[ which.max(absval) ]
+  sumry$maxci  <- obj$acf.ci[ which.max(absval), ]
 
   class(sumry) <- c("summaryccf")
   return(sumry)
@@ -56,7 +58,7 @@ summary.ccf <- function(obj, digits) {
 #'
 #' @export
 #'
-#' @seealso  [base::print()]
+#' @seealso  `[base::print()]`
 #' @author Jan Seifert
 #' @examples print( summary(ccf(1:10, 10:1)) )
 print.summaryccf <- function (x, digits = max(3, getOption("digits") - 3L)) {
@@ -66,38 +68,39 @@ print.summaryccf <- function (x, digits = max(3, getOption("digits") - 3L)) {
   # = Definition section =
   # 1. Compile it
   info <- c("Type", "Shift method")
-  sumry <- array("", c(length(info), 1L), list(info, c("Details")))
+  sumry <- array("", c(length(info), 1L), list(info, c("")))
   sumry[1L, 1L] <- type
   if (x$smethod[[1]] == "replace") # Method Replace with ...
     sumry[2L, 1L] <- paste0("replace with \"", x$smethod[[2]], "\"") 
   else # Method: Wrap, Cut, Imprison
     sumry[2L, 1L] <- x$smethod[[1]]
-  #class(sumry) <- c("table")
   
   # 2. Print it
-  cat("Definition:\n\n")
+  cat("Definition:\n")
   print.table(sumry)
   
   # = Content section =
   # 1. Compile it
   info <- c("NAs", "Range", paste("Minimum", abbrev[type]), 
             paste("Maximum", abbrev[type]))
-  sumry <- array("", c(length(info), 1L), list(info, c("Details")))
+  sumry <- array("", c(length(info), 1L), list(info, c("")))
   sumry[1L, 1L] <- x$nacount
   sumry[2L, 1L] <- paste(signif(x$range, digits), collapse = " to ")
-  sumry[3L, 1L] <- paste0( signif(x$min, digits), 
+  # is outside confidence interval? Mark maximum with '*'.
+  chrsig <- ifelse(prod(x$minci) > 0, "*", "")
+  sumry[3L, 1L] <- paste0( signif(x$min, digits), chrsig,
                            " at lag ", 
                            toString(signif(x$minpos, digits)) )
-  sumry[4L, 1L] <- paste0( signif(x$max, digits), 
+  # is outside confidence interval? Mark maximum with '*'.
+  chrsig <- ifelse(prod(x$maxci) > 0, "*", "")
+  sumry[4L, 1L] <- paste0( signif(x$max, digits), chrsig,
                            " at lag ", 
                            toString(signif(x$maxpos, digits)) )
   
   # 2. Print it
-  cat("\n\nValues:\n\n")
+  cat("\n\nValues:\n")
   print.table(sumry)
 }
 
-
-
-#y <- summary(o)
-#print(y)
+# y <- summary(o)
+# print(y)

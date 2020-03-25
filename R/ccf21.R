@@ -15,12 +15,14 @@
 #' 65 (1), p. 23-28.
 #' @examples
 .CorConf_Fisher <- function( r, n, ci = 0.95 ) {
-  if(missing(r)) stop("Pearson correlation 'r' required")
-  if(missing(n)) stop("Sample size 'n' required")
-  if(any(r > 1) || any(r < -1)) 
+  if (missing(r)) stop("Pearson correlation 'r' required")
+  if (missing(n)) stop("Sample size 'n' required")
+  if (any(r > 1) || any(r < -1)) 
     stop("Correlations are only defined between -1 and 1")
-  if(any(ci > 1) || any(ci < 0)) 
+  if (any(ci > 1) || any(ci < 0)) 
     stop("Confidence is only defined between 0 and 1")
+  if (any(ci > 1 - .Machine$double.eps)) 
+    stop("'ci' is out of range of definition of this function")
   
   # Assume two-sided limits, i.e. use 0.975 instead 0.95
   cutoff <- qnorm( (ci+1)*0.5 )
@@ -30,15 +32,16 @@
   rm1 <- which(r == -1)
   # Fisher z transform
   z <- log( (1+r) / (1-r) ) / 2
-  z[rp1] <- Inf  # Set r= 1/-1 to Inf/-Inf
+  z[rp1] <- +Inf  # Set r= 1/-1 to Inf/-Inf
   z[rm1] <- -Inf
   #
   zci <- cbind( (z - cutoff * sqrt(1/(n-3))),
                 (z + cutoff * sqrt(1/(n-3))) )
   # inverse fisher transform to get r back
   rci <- (exp(2*zci)-1) / (exp(2*zci)+1)
-  rci[rp1,] <- c(1, 1)
-  rci[rm1,] <- c(-1, -1)
+  # Handle special cases, i.e. r = 1, r = -1, ci = 1
+  rci[rp1,]  <- c(1, 1)
+  rci[rm1,]  <- c(-1, -1)
   
   colnames(rci) <- c("lower", "upper")
   rownames(rci) <- rep(r, length.out = nrow(rci))
@@ -164,6 +167,9 @@
 #' @param na.action function to be called to handle missing values.
 #' `na.pass` can be used.
 #' @param ... further arguments to be passed to `plot`.
+#' @details Unlike the classic ccf/acf (see `[stats::plot.acf]`) functions 
+#' this version does not return a confidence interval around zero but the
+#' correlation at each lag.
 #' @return An object of class "`ccf`" and "`acf`", which is a list with 
 #' the following elements:
 #' \describe{
@@ -301,7 +307,6 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
   }
 
   
-  
   if("imprison" == shiftaction) {
     if(stationary) {
       st_n    <- length(x)
@@ -331,9 +336,12 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
     .lag    <- array(lags-1, dim = c(length(lags), 1L, 1L)) / x.freq # correct lags by 1
     n.used  <- length(x)
   }
-  
+
+
   if(is.finite(ci)) {
-    ci <- .CorConf_Fisher( r, nr, ci )
+    rci <- .CorConf_Fisher( r, nr, ci )
+  } else {
+    rci <- NA
   }
   
   # FINISH
@@ -343,9 +351,11 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
                              lag = .lag, 
                              series = "X", 
                              snames = paste(c(deparse(substitute(x))[1L], 
-                                              deparse(substitute(y))[1L]), collapse = " & "),
+                                              deparse(substitute(y))[1L]), 
+                                            collapse = " & "),
                              acf.n = nr,
-                             acf.ci = ci,
+                             acf.ci = rci,
+                             ci.level = ci,
                              shiftaction = shiftaction, 
                              stationary = stationary,
                              replacedby = replaceby),
@@ -359,7 +369,7 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
     return(acf.out)
 }
 
-#ccf( 1:10, 1:10, shiftaction = "cut", lag.max = 0 )
+ccf( 1:10, 1:10, shiftaction = "cut", lag.max = 0, ci = 0.95 )
 # x <- ccf( rep(1:2, 10), rep(c(1, 1, 2, 2), 5), shiftaction = "cut", 
 #           lag.max = 8, na.action = na.pass )
 #plot.acf(x)

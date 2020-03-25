@@ -43,25 +43,32 @@ plot.ccf <- function(x, ci = 0.95, type = "h",
                      cex.main = 1, mar = NULL, 
                      max.mfrow = NULL, ask = NULL, # obsolete args
                      oma = NULL, mgp = NULL, xpd = NULL, # obsolete args
-                     verbose = NULL, # obsolete args
-                     ...) {
+                     verbose = NULL, ...) { # obsolete args
   # PRECONDITIONS
   ci.type <- match.arg(ci.type)
   if (ci > 0 && x$type != "covariance") {
     if(ci.type == "white") {
       ci.line <- qnorm((1+ci)/2) / sqrt(x$n.used)
-    } else {
-      if(is.null(x$ci)) {
-        stop("not implemented, yet") #TODO: compute ci
+      ci.line <- cbind(lower = drop(x$acf) - ci.line,
+                       upper = drop(x$acf) + ci.line)
+      #TODO: create around r
+    } else { #ci.type = ma
+      if(is.null(x$acf.ci) || is.na(x$acf.ci)) {
+        ci.line <- .CorConf_Fisher( drop(x$acf), x$acf.n, ci )
+      } else if(x$ci.level != ci) {
+        ci.line <- .CorConf_Fisher( drop(x$acf), x$acf.n, ci )
+      } else {
+        ci.line <- x$acf.ci
       }
-      stop("not implemented, yet") #TODO: create ci-line from data
     }
   }
+  
   if(!is.numeric(cex.main)) cex.main <- 1
 
   # RUN
   if (is.null(ylim)) 
     ylim <- c( -max(abs(range(x$acf))), max(abs(range(x$acf))) )
+    if(!is.null(ci.line)) ylim <- ylim * 1.05
   else {
     # Range has two values. Make sure first one is negative.
     if (length(ylim) == 1) ylim <- c(-ylim, ylim) * sign(ylim) 
@@ -74,7 +81,6 @@ plot.ccf <- function(x, ci = 0.95, type = "h",
   g <- ggplot(d.ccf, aes(x = lag, y = acf)) +
     geom_hline(yintercept = 0) +
     ylim(low = ylim[1], high = ylim[2]) +
-    #theme_bw() +
     theme(
       plot.title = element_text(size = (11*1.2)*cex.main)
     ) +
@@ -96,15 +102,13 @@ plot.ccf <- function(x, ci = 0.95, type = "h",
 
   # Add confidence intervals
   if(!is.null(ci.line)) {
-    if (length(ci.line) == 1) {
-      g <- g  + 
-        geom_hline(yintercept = +ci.line, 
-                   color = ci.col, linetype = "dashed") +
-        geom_hline(yintercept = -ci.line, 
-                   color = ci.col, linetype = "dashed")
-    } else {
-      #TODO: Put correct confidence right here
-    }
+    ci.line <- data.frame(lag = x$lag, ci.line)
+    g <- g + geom_line(data = ci.line, mapping = aes(x = lag, y = upper), 
+                       inherit.aes = FALSE, 
+                       color = ci.col, linetype = "dashed")
+    g <- g + geom_line(data = ci.line, mapping = aes(x = lag, y = lower), 
+                       inherit.aes = FALSE, 
+                       color = ci.col, linetype = "dashed")
   }
   
   # Add margins
@@ -119,5 +123,6 @@ plot.ccf <- function(x, ci = 0.95, type = "h",
   invisible(g)
 }
 
-#p <- plot(o, ci.type = "white", type = "h", sub = "YEAH!")
-#print(p)
+
+p <- plot(o, ci = 0.95, ci.type = "white", type = "h", sub = "YEAH!")
+print(p)

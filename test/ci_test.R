@@ -19,6 +19,10 @@ test_that(".CorConf_Fisher: PRECONDITIONS", {
                "Confidence is only defined between 0 and 1")
   expect_error(.CorConf_Fisher( r = +1, n = 100, ci = 0-sqrt(.Machine$double.eps) ), 
                "Confidence is only defined between 0 and 1")
+  
+  expect_error(.CorConf_Fisher( r = 0, n = 99999, ci = 1 - .Machine$double.eps^2 ), 
+               "'ci' is out of range of definition of this function")
+  
 })
 
 
@@ -63,7 +67,7 @@ test_that(".CorConf_Fisher: data sets", {
     
     # Less accurate version that uses the sd of the normal distr.
     ## Still have to find my error in reasoning here. But I do not 
-    ## think it's a problem that we 
+    ## think it's a problem. The other tests are positive.
     # o <- .CorConf_Fisher( r = 0, n = n, ci = ci )
     # sd <- 1 / sqrt(n-1.5)
     # e <- qnorm( (ci+1)*0.5, sd = sd )
@@ -73,8 +77,10 @@ test_that(".CorConf_Fisher: data sets", {
     # expect_equal(o, e, tolerance = 1E-3)
     #
   }
+})
 
   
+test_that(".CorConf_Fisher: Special Cases", {
   # Confidence interval for 1/-1 is [1,1] / [-1,-1]
   N <- 5  
   e <- cbind(rep(1, N), rep(1, N))
