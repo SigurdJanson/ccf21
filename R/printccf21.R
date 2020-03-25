@@ -10,12 +10,22 @@
 print.ccf <- function (x, digits = max(3, getOption("digits") - 3L), ...) {
   type <- match(x$type, c("correlation", "covariance"))
   msg <- c("Cross-Correlations", "Cross-Covariances")
-  cat("\n", msg[type], " of series ", sQuote(x$series), " by lag\n\n", sep = "")
+  cat("\n", msg[type], " by lag\n\n", sep = "")
   
-  # is 0 outside of confidence interval?
   type <- c("cor", "cov")[type]
-  asterisk <- apply(x$acf.ci, 1, function(x) ifelse(prod(x) > 0, "*", "") )
-  ccfs <- data.frame(drop(x$lag), drop(x$acf), asterisk)
-  colnames(ccfs) <- c("lag", type, "sign.")
+  # is 0 outside of confidence interval?
+  if(!is.na(x$acf.ci)) {
+    asterisk <- apply(x$acf.ci, 1, function(x) ifelse(prod(x) > 0, "*", "") )
+    ccfs <- data.frame(drop(x$lag), drop(x$acf), asterisk)
+    colnames(ccfs) <- c("lag", type, "sign.")
+  } else{
+    ccfs <- data.frame(drop(x$lag), drop(x$acf))
+    colnames(ccfs) <- c("lag", type)
+  }
+  
   print(ccfs, digits = digits, right = FALSE, row.names = FALSE, ...)
+  invisible(x)
 }
+
+#result <- ccf( 1:10, 1:10, shiftaction = "cut", lag.max = 5, plot = FALSE )
+#print(result)

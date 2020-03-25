@@ -100,6 +100,7 @@ print.summaryccf <- function (x, digits = max(3, getOption("digits") - 3L)) {
   # 2. Print it
   cat("\n\nValues:\n")
   print.table(sumry)
+  invisible(x)
 }
 
 # y <- summary(o)
