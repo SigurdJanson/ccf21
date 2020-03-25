@@ -41,7 +41,7 @@
   rci[rm1,] <- c(-1, -1)
   
   colnames(rci) <- c("lower", "upper")
-  rownames(rci) <- r
+  rownames(rci) <- rep(r, length.out = nrow(rci))
   return(rci)
 }
 
@@ -238,9 +238,10 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
   }
   lag.max <- as.integer(min(lag.max, min(LenX, LenY) - 1L))
 
-  if (is.numeric(ci)) {
-    if (ci < 0 || ci > 1) stop("Confidence 'ci' must be between 0 and 1.")
-  }
+  if (!is.null(ci)) { # is a valid number?
+    if (is.finite(ci) && (ci < 0 || ci > 1))
+      stop("Confidence 'ci' must be between 0 and 1.")
+  } else ci <- NA
   
   # RUN: Cross-Correlate
   x.freq <- frequency(x)
@@ -331,7 +332,7 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
     n.used  <- length(x)
   }
   
-  if(is.numeric(ci)) {
+  if(is.finite(ci)) {
     ci <- .CorConf_Fisher( r, nr, ci )
   }
   
@@ -358,6 +359,7 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
     return(acf.out)
 }
 
+#ccf( 1:10, 1:10, shiftaction = "cut", lag.max = 0 )
 # x <- ccf( rep(1:2, 10), rep(c(1, 1, 2, 2), 5), shiftaction = "cut", 
 #           lag.max = 8, na.action = na.pass )
 #plot.acf(x)

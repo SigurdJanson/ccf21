@@ -30,6 +30,16 @@ test_that("ccf21: PRECONDITIONS", {
                     shiftaction = "wrap" ), 
                "The time series have different frequencies")
   
+  # 
+  expect_silent(ccf( 1:2, 1:2, lag.max = 1, ci = NA ))
+  expect_silent(ccf( 1:2, 1:2, lag.max = 1, ci = NA_real_ ))
+  expect_silent(ccf( 1:2, 1:2, lag.max = 1, ci = +Inf ))
+  expect_silent(ccf( 1:2, 1:2, lag.max = 1, ci = -Inf ))
+  expect_silent(ccf( 1:2, 1:2, lag.max = 1, ci = NaN ))
+  expect_error(ccf( 1:2, 1:2, lag.max = 1, ci = -.Machine$double.eps ),
+               "Confidence 'ci' must be between 0 and 1.")
+  expect_error(ccf( 1:2, 1:2, lag.max = 1, ci = 1+.Machine$double.eps ),
+               "Confidence 'ci' must be between 0 and 1.")
 })
 
 
