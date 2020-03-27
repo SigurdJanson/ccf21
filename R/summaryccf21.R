@@ -79,7 +79,7 @@ print.summaryccf <- function (x, digits = max(3, getOption("digits") - 3L)) {
   # 1. Compile it
   info <- c("Type", "Shift method", "Range of lags")
   sumry <- array("", c(length(info), 1L), list(info, c("")))
-  sumry[1L, 1L] <- type
+  sumry[1L, 1L] <- abbrev[type]
   if (x$smethod[[1]] == "replace") # Method Replace with ...
     sumry[2L, 1L] <- paste0("replace with \"", x$smethod[[2]], "\"") 
   else # Method: Wrap, Cut, Imprison
@@ -122,6 +122,6 @@ print.summaryccf <- function (x, digits = max(3, getOption("digits") - 3L)) {
 
 #y <- summary(o)
 #print(y)
-#y <- ccf( 1:10, 1:10, shiftaction = "cut", lag.max = 5, plot = FALSE )
+y <- ccf( 1:10, 1:10, shiftaction = "cut", lag.max = 5, plot = FALSE )
 #print(class(y))
-#y <- summary(y)
+y <- summary(y)
