@@ -8,7 +8,9 @@
 #' @details The function uses the Fisher z transform to get approximately normal
 #' distributed correlations, computes the confidence range and transforms the
 #' values back to correlations.
-#' @return A two-comlumn matrix with each row holding the range of confidence.
+#' @return A two-column matrix with each row holding the range of confidence.
+#' @note Note: these confidence intervals are not symmetrical because of 
+#' the characteristics of the probability distribution of correlations.
 #' @author Jan Seifert
 #' @references Bonett, D. G. & Wright, T. A. (2000). Sample Size Requirements 
 #' for Estimating Pearson, Kendall and Spearman Correlations.” Psychometrika, 
@@ -195,7 +197,7 @@
 #' between `x[t+k]` and `y[t]`.
 #' 
 #' The result is returned invisibly if plot is TRUE.
-#' @seealso [stats::ccf()]
+#' @seealso `[stats::ccf()]`
 #' @author Jan Seifert
 #' @export
 ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"), 
