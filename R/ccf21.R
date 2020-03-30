@@ -185,6 +185,11 @@
 #'   \item{series}{The name of the series x. Is always `X` and can be ignored.
 #'   It has been kept due to compatibility reasons.}
 #'   \item{snames}{The series names.}
+#'   \item{acf.n}{Vectors with the number of samples used for each 
+#'   cross-correlation at each lag.}
+#'   \item{acf.ci}{Two-column matrix with lower (column 1) and upper 
+#'   confidence level (column 2) at each lag.}
+#'   \item{ci.level}{The set confidence level used to determin `acf.ci`.}
 #'   \item{shiftaction}{The action that handled values being moved 
 #'   out of range (same as the `shiftaction` argument).}
 #'   \item{stationary}{Are the cross-correlations in this structure
