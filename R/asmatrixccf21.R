@@ -1,3 +1,16 @@
+#' as.matrix.ccf
+#' Convert object of type `ccf` into a matrix.
+#' @param x a `ccf` object.
+#' @param rownames.force logical indicating if the resulting matrix 
+#' should have character (rather than `NULL`) rownames. The default is 
+#' `TRUE`.
+#' @return Numeric matrix
+#' @author Jan Seifert
+#' @export
+#' @examples
+#' result <- ccf( 1:10, 1:10, shiftaction = "cut", lag.max = 5, 
+#'                plot = FALSE, ci = 0.95)
+#  print(as.matrix(result))
 as.matrix.ccf <- function(x, rownames.force = TRUE) {
   # PRECONDITIONS - none that need to be checked extra
   # RESULTS

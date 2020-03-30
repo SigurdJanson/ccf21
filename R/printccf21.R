@@ -4,6 +4,7 @@
 #' @param digits minimal number of significant digits
 #' @param ... further arguments passed to print methods.
 #'
+#' @author Jan Seifert
 #' @export
 #' @seealso  [base::print,data.frame()]
 #' @examples print(ccf(1:10, 10:1))
@@ -14,7 +15,7 @@ print.ccf <- function (x, digits = max(3, getOption("digits") - 3L), ...) {
   
   type <- c("cor", "cov")[type]
   # is 0 outside of confidence interval?
-  if(!is.na(x$acf.ci)) {
+  if (!is.na(x$acf.ci)) {
     asterisk <- apply(x$acf.ci, 1, function(x) ifelse(prod(x) > 0, "*", "") )
     ccfs <- data.frame(drop(x$lag), drop(x$acf), asterisk)
     colnames(ccfs) <- c("lag", type, "sign.")
