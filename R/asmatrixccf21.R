@@ -39,7 +39,3 @@ as.matrix.ccf <- function(x, rownames.force = TRUE) {
   return(result)
 }
 
-
-# result <- ccf( 1:10, 1:10, shiftaction = "cut", lag.max = 5, plot = FALSE,
-#                ci = 0.95)
-# x <- as.matrix(result)

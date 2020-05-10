@@ -377,7 +377,3 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
     return(acf.out)
 }
 
-#ccf( 1:10, 1:10, shiftaction = "cut", lag.max = 0, ci = 0.95 )
-# x <- ccf( rep(1:2, 10), rep(c(1, 1, 2, 2), 5), shiftaction = "cut", 
-#           lag.max = 8, na.action = na.pass )
-#plot.acf(x)

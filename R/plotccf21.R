@@ -124,5 +124,5 @@ plot.ccf <- function(x, ci = 0.95, type = "h",
 }
 
 
-p <- plot(o, ci = 0.95, ci.type = "white", type = "h", sub = "YEAH!")
-print(p)
+#p <- plot(o, ci = 0.95, ci.type = "white", type = "h", sub = "YEAH!")
+#print(p)
