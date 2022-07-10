@@ -53,7 +53,7 @@
 
 
 #' .Cor_ccf
-#' Correlation two vectors x and y. Mean, standard deviation and sample size can 
+#' Correlating two vectors x and y. Mean, standard deviation and sample size can 
 #' deviate from sample estimates.
 #' @param x,y Numeric vectors
 #' @param type Character string giving the type of acf to be computed. 
