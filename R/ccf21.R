@@ -162,17 +162,19 @@
 #' computed. Allowed values are "correlation" (the default) or "covariance". 
 #' Will be partially matched.
 #' @param stationary Shall vectors be treated as if they were a stationary time
-#' series. If `FALSE` plain correlations will be used.
+#' series. If `FALSE` plain correlations will be used. If `x` and `y` are both 
+#' [`time series objects`][stats::ts], `TRUE` is the default, otherwise it is `FALSE`.
 #' @param shiftaction How to handle values that are shifted out of range. 
 #' See details.
+#' @param replaceby A numeric value that is used when `shiftaction = "replace"`.
 #' @param plot logical. If `TRUE` (the default) the `ccf` is plotted.
 #' @param na.action function to be called to handle missing values.
 #' `na.pass` can be used.
 #' @param ... further arguments to be passed to `plot`.
 #' @details Unlike the classic ccf/acf (see `[stats::plot.acf]`) functions 
-#' this version does not return a confidence interval around zero but the
+#' this version does not return a confidence interval around zero but around the
 #' correlation at each lag.
-#' @return An object of class "`ccf`" and "`acf`", which is a list with 
+#' @return An S3 object of class "`ccf`" and "`acf`", which is a list with 
 #' the following elements:
 #' \describe{
 #'   \item{lag}{A three dimensional array containing the lags at 
