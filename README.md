@@ -1,11 +1,11 @@
-2024-10-06
+2024-10-07
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- <img src="vignettes/img/logo_huh.svg" align="right" width="20%"/> -->
 <!-- badges: start -->
 
 [![Lifecycle:
-stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#beta)
+stable](https://img.shields.io/badge/lifecycle-experimental-yellow.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![Codecov test
 coverage](https://codecov.io/gh/SigurdJanson/ccf21/branch/main/graph/badge.svg)](https://app.codecov.io/gh/SigurdJanson/ccf21?branch=main)
 <!-- badges: end -->
