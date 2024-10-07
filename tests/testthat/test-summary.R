@@ -1,15 +1,15 @@
 library(testthat)
-source("../R/ccf21.R")
-source("../R/summaryccf21.R")
+#source("../R/ccf21.R")
+#source("../R/summaryccf21.R")
 
 
 test_that("summary.ccf21: preconditions", {
   expect_null(summary.ccf(NULL))
 })
-  
+
 
 test_that("summary.ccf21: formal structure", {
-  result <- ccf( 1:10, 1:10, shiftaction = "cut", 
+  result <- ccf( 1:10, 1:10, shiftaction = "cut",
                  lag.max = 5, plot = FALSE )
   expect_s3_class(result, "ccf")
   # defaults
@@ -27,7 +27,7 @@ test_that("summary.ccf21: content", {
   result <- ccf( 1:10, 1:10, shiftaction = "cut", lag.max = 5, type = "covariance" )
   expect_s3_class(result, "ccf")
   sumry  <- summary(result)
-  
+
   expect_equal(sumry$range, c(2.5, 9.166666666667))
   expect_equal(sumry$max, 9.166666666667)
   expect_equal(sumry$maxpos, 0)
@@ -42,7 +42,7 @@ test_that("summary.ccf21: content", {
 })
 
 
-## 
+##
 test_that("print.summary.ccf21", {
   # Covariance: to check if labels are correct
   result <- ccf( 1:10, 1:10, shiftaction = "cut", lag.max = 5, type = "covariance" )
@@ -55,10 +55,10 @@ test_that("print.summary.ccf21", {
   expect_output(print(sumry), "Range       2.5 to 9.167")
   expect_output(print(sumry), "Minimum Cov 2.5 at lag -5, 5")
   expect_output(print(sumry), "Maximum Cov 9.167 at lag 0")
-  
+
   # Correlation: to check if labels are correct
   # I do not have exact value, for now
-  result <- ccf( 1:10, 1:10, shiftaction = "replace", replaceby = 0, 
+  result <- ccf( 1:10, 1:10, shiftaction = "replace", replaceby = 0,
                  lag.max = 5, type = "correlation" )
   sumry <- summary(result)
   expect_output(print(sumry), "Definition:")
