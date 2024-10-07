@@ -1,0 +1,18 @@
+Package: ccf21
+Title: Extended Cross-Correlation Function
+Version: 0.0.0.9000
+Authors@R:
+    person(given = "Jan",
+           family = "Seifert",
+           role = c("aut", "cre"),
+           email = "github@sigurdjanson.anonaddy.com")
+Description: This package provides a new ccf function that replaces stats::ccf and adds further options for calculating cross-correlations.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Suggests: 
+    testthat (>= 3.0.0),
+    ggplot2,
+    rmarkdown
+Config/testthat/edition: 3
