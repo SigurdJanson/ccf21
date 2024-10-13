@@ -9,8 +9,6 @@ Summary for a cross-correlation object \code{ccf}.}
 }
 \arguments{
 \item{obj}{an object of class \code{ccf}.}
-
-\item{digits}{the number of significant digits to use when printing.}
 }
 \value{
 This function computes and returns a list of summary statistics:

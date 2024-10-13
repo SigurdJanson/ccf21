@@ -44,6 +44,8 @@ vertical lines. See \verb{[plot()]} for details.}
 
 \item{ylab}{the y label of the plot.}
 
+\item{sub}{subtitle for the plot.}
+
 \item{ylim}{numeric of length 2 giving the y limits for the plot.}
 
 \item{main}{overall title for the plot.}
@@ -59,19 +61,19 @@ to adjust the size.}
 \item{mar}{Numerical vector of the form \code{c(bottom, left, top, right)}
 which gives the number of text lines of margin.}
 
-\item{max.mfrow}{Obsolete.}
+\item{max.mfrow}{Unused. Available only for compatibility reasons.}
 
-\item{ask}{Obsolete.}
+\item{ask}{Unused. Available only for compatibility reasons.}
 
-\item{oma}{Obsolete.}
+\item{oma}{Unused. Available only for compatibility reasons.}
 
-\item{mgp}{Obsolete.}
+\item{mgp}{Unused. Available only for compatibility reasons.}
 
-\item{xpd}{Obsolete.}
+\item{xpd}{Unused. Available only for compatibility reasons.}
 
-\item{verbose}{Obsolete.}
+\item{verbose}{Unused. Available only for compatibility reasons.}
 
-\item{...}{Obsolete.}
+\item{...}{Unused. Available only for compatibility reasons.}
 }
 \description{
 plot.ccf

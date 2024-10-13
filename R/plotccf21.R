@@ -9,6 +9,7 @@
 #' @param ylab the y label of the plot.
 #' @param ylim numeric of length 2 giving the y limits for the plot.
 #' @param main overall title for the plot.
+#' @param sub subtitle for the plot.
 #' @param ci.col colour to plot the confidence interval lines.
 #' @param ci.type should the confidence limits assume a white noise
 #' input or for lag `k` an `MA(k-1)` input? Can be abbreviated.
@@ -16,13 +17,13 @@
 #' which gives the number of text lines of margin.
 #' @param cex.main Default size for the title will be multiplied with `cex.main`
 #' to adjust the size.
-#' @param max.mfrow Obsolete.
-#' @param ask Obsolete.
-#' @param oma Obsolete.
-#' @param mgp Obsolete.
-#' @param xpd Obsolete.
-#' @param verbose Obsolete.
-#' @param ... Obsolete.
+#' @param max.mfrow Unused. Available only for compatibility reasons.
+#' @param ask Unused. Available only for compatibility reasons.
+#' @param oma Unused. Available only for compatibility reasons.
+#' @param mgp Unused. Available only for compatibility reasons.
+#' @param xpd Unused. Available only for compatibility reasons.
+#' @param verbose Unused. Available only for compatibility reasons.
+#' @param ... Unused. Available only for compatibility reasons.
 #' @note The white noise option for confidence intervals is probably misleading.
 #' It is based on an uncorrelated series and should be treated with appropriate caution.
 #' It is only kept here for compatibility reasons.

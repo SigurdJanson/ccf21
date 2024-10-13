@@ -167,6 +167,9 @@
 #' @param shiftaction How to handle values that are shifted out of range.
 #' See details.
 #' @param replaceby A numeric value that is used when `shiftaction = "replace"`.
+#' Otherwise it is ignored, but if replacement is set this parameter is mandatory.
+#' @param ci Confidence level (0 < ci < 1).
+#' Ignored, if `type == "covariance"`.
 #' @param plot logical. If `TRUE` (the default) the `ccf` is plotted.
 #' @param na.action function to be called to handle missing values.
 #' `na.pass` can be used.

@@ -11,7 +11,7 @@
 returned from the ccf21 implementation.}
 
 \item{tol}{A tolerance below the maximum. When \code{tol != 0} not only the absolute
-maximum will be returned but all values within the interval  $\link{max, max-tol}$.}
+maximum will be returned but all values within the interval \verb{[max+tol, max-tol]}.}
 }
 \value{
 A matrix with two columns. First column contains the correlation / covariances.

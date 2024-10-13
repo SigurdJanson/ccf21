@@ -16,7 +16,7 @@ ccf(
   replaceby = NULL,
   ci = NULL,
   plot = TRUE,
-  na.action = na.fail,
+  na.action = stats::na.fail,
   ...
 )
 }
@@ -39,7 +39,11 @@ series. If \code{FALSE} plain correlations will be used. If \code{x} and \code{y
 \item{shiftaction}{How to handle values that are shifted out of range.
 See details.}
 
-\item{replaceby}{A numeric value that is used when \code{shiftaction = "replace"}.}
+\item{replaceby}{A numeric value that is used when \code{shiftaction = "replace"}.
+Otherwise it is ignored, but if replacement is set this parameter is mandatory.}
+
+\item{ci}{Confidence level (0 < ci < 1).
+Ignored, if \code{type == "covariance"}.}
 
 \item{plot}{logical. If \code{TRUE} (the default) the \code{ccf} is plotted.}
 
