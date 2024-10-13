@@ -27,7 +27,7 @@
     stop("'ci' is out of range of definition of this function")
 
   # Assume two-sided limits, i.e. use 0.975 instead 0.95
-  cutoff <- qnorm( (ci+1)*0.5 )
+  cutoff <- stats::qnorm( (ci+1)*0.5 )
 
   # Identify +/-1 because transformation cannot handle that
   rp1 <- which(r == 1)
@@ -78,15 +78,15 @@
   # CODE
   if (anyNA(mean) && anyNA(sd) && anyNA(n)) {
     if (type == "correlation")
-      test <- cor(x, y)
+      test <- stats::cor(x, y)
     else
-      test <- cov(x, y)
+      test <- stats::cov(x, y)
   } else {
     # make sure mean & sd have the format 'c(x, y)' without NAs
     if (length(mean) == 1) mean <- c(mean, mean)
     if (length(sd)   == 1) sd   <- c(sd, sd)
     mean[which(is.na(mean))] <- c(mean(x), mean(y))[which(is.na(mean))]
-    sd  [which(is.na(sd))]   <- c(sd(x), sd(y))[which(is.na(sd))]
+    sd  [which(is.na(sd))]   <- c(stats::sd(x), stats::sd(y))[which(is.na(sd))]
     if (is.na(n))  n <- length(x)
     #
     cov <- sum( (x - mean[1]) * (y - mean[2]) ) / (n-1)
@@ -211,22 +211,22 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
                  stationary = NULL,
                  shiftaction = c("cut", "wrap", "replace", "imprison"),
                  replaceby = NULL, ci = NULL,
-                 plot = TRUE, na.action = na.fail, ...)  {
+                 plot = TRUE, na.action = stats::na.fail, ...)  {
 
   # PRECONDITIONS & PREPARATIONS
   if (is.matrix(x) || is.matrix(y))
     stop("Only univariate data is allowed.")
 
-  if (is.ts(x) && is.ts(y))
-    if(abs(frequency(x) - frequency(y)) > getOption("ts.eps")*0.5)
+  if (stats::is.ts(x) && stats::is.ts(y))
+    if(abs(stats::frequency(x) - stats::frequency(y)) > getOption("ts.eps")*0.5)
       stop("The time series have different frequencies")
-  x <- na.action(x)
-  y <- na.action(y)
-  if (identical(na.action, na.fail) && identical(replaceby, NA))
+  x <- stats::na.action(x)
+  y <- stats::na.action(y)
+  if (identical(na.action, stats::na.fail) && identical(replaceby, NA))
     stop("Cannot use 'replacement' NA when 'na.action' is fail.")
 
   if (missing(stationary))
-    stationary <- (is.ts(x) || is.ts(y))
+    stationary <- (stats::is.ts(x) || stats::is.ts(y))
 
   type <- match.arg(type)
 
@@ -260,14 +260,14 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
   if (type == "covariance") ci <- NA
 
   # RUN: Cross-Correlate
-  x.freq <- frequency(x)
+  x.freq <- stats::frequency(x)
 
 
   if(shiftaction == "cut") {
     if(stationary) {
       st_n    <- length(x)
       st_mean <- c(mean(x), mean(y))
-      st_sd   <- c(sd(x),   sd(y))
+      st_sd   <- c(stats::sd(x), stats::sd(y))
     } else {
       st_n <- NA
       st_mean <- st_sd <- c(NA, NA)
@@ -296,7 +296,7 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
     if(stationary) {
       st_n    <- length(x)
       st_mean <- c(mean(x), mean(y))
-      st_sd   <- c(sd(x),   sd(y))
+      st_sd   <- c(stats::sd(x), stats::sd(y))
     } else {
       st_n <- NA
       st_mean <- st_sd <- c(NA, NA)
@@ -321,7 +321,7 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
     if(stationary) {
       st_n    <- length(x)
       st_mean <- c(mean(x), mean(y))
-      st_sd   <- c(sd(x),   sd(y))
+      st_sd   <- c(stats::sd(x), stats::sd(y))
     } else {
       st_n <- NA
       st_mean <- st_sd <- c(NA, NA)
