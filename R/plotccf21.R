@@ -62,6 +62,10 @@ plot.ccf <- function(x, ci = 0.95, type = "h",
       }
     }
   }
+  else
+  {
+    ci.line <- NULL
+  }
 
   if(!is.numeric(cex.main)) cex.main <- 1
 
