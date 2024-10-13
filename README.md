@@ -140,6 +140,10 @@ You can install the development version of huh from
 devtools::install_github("SigurdJanson/ccf21")
 ```
 
+Please note: loading this package will mask `stats::ccf`.
+
+
+
 ## References
 
 Bonett, D. G. & Wright, T. A. (2000). Sample Size Requirements for
