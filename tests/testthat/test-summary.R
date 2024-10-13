@@ -1,4 +1,4 @@
-library(testthat)
+#library(testthat)
 #source("../R/ccf21.R")
 #source("../R/summaryccf21.R")
 
