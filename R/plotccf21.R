@@ -1,5 +1,3 @@
-library(ggplot2)
-
 #' plot.ccf
 #' Plot method for objects of class "`ccf`".
 #' @param x an object of class `ccf`.
@@ -49,7 +47,7 @@ plot.ccf <- function(x, ci = 0.95, type = "h",
   ci.type <- match.arg(ci.type)
   if (ci > 0 && x$type != "covariance") {
     if(ci.type == "white") {
-      ci.line <- qnorm((1+ci)/2) / sqrt(x$n.used)
+      ci.line <- stats::qnorm((1+ci)/2) / sqrt(x$n.used)
       ci.line <- cbind(lower = drop(x$acf) - ci.line,
                        upper = drop(x$acf) + ci.line)
       #TODO: create around r
@@ -78,43 +76,43 @@ plot.ccf <- function(x, ci = 0.95, type = "h",
   if (is.null(ylab)) ylab <- "CCF"
 
 
-  d.ccf <- data.frame(lag = x$lag, acf = x$acf)
-  g <- ggplot(d.ccf, aes(x = lag, y = acf)) +
-    geom_hline(yintercept = 0) +
-    ylim(low = ylim[1], high = ylim[2]) +
-    theme(
-      plot.title = element_text(size = (11*1.2)*cex.main)
+  d.ccf <- data.frame(lagval = x$lag, acfval = x$acf)
+  g <- ggplot2::ggplot(d.ccf, ggplot2::aes(x = lagval, y = acfval)) +
+    ggplot2::geom_hline(yintercept = 0) +
+    ggplot2::ylim(low = ylim[1], high = ylim[2]) +
+    ggplot2::theme(
+      plot.title = ggplot2::element_text(size = (11*1.2)*cex.main)
     ) +
-    labs(x = xlab, y = ylab, subtitle = sub,
+    ggplot2::labs(x = xlab, y = ylab, subtitle = sub,
          caption = paste("Shifting action =", x$shiftaction)) +
-    ggtitle(ifelse(is.null(main), x$snames, main))
-  
+    ggplot2::ggtitle(ifelse(is.null(main), x$snames, main))
+
   # Add values
   if (type == "h")
-    g <- g + geom_segment(aes(xend = lag, yend = 0))
+    g <- g + ggplot2::geom_segment(ggplot2::aes(xend = lagval, yend = 0))
   else if (type == "l")
-    g <- g + geom_line()
+    g <- g + ggplot2::geom_line()
   else if (type == "b")
-    g <- g + geom_line() + geom_point()
+    g <- g + ggplot2::geom_line() + ggplot2::geom_point()
   else if (type == "s")
-    g <- g + geom_step()
+    g <- g + ggplot2::geom_step()
   else if (type == "S")
-    g <- g + geom_step(direction = "vh")
+    g <- g + ggplot2::geom_step(direction = "vh")
 
   # Add confidence intervals
   if(!is.null(ci.line)) {
-    ci.line <- data.frame(lag = x$lag, ci.line)
-    g <- g + geom_line(data = ci.line, mapping = aes(x = lag, y = upper),
+    ci.line <- data.frame(lagval = x$lag, ci.line)
+    g <- g + ggplot2::geom_line(data = ci.line, mapping = ggplot2::aes(x = lagval, y = .data$upper),
                        inherit.aes = FALSE,
                        color = ci.col, linetype = "dashed")
-    g <- g + geom_line(data = ci.line, mapping = aes(x = lag, y = lower),
+    g <- g + ggplot2::geom_line(data = ci.line, mapping = ggplot2::aes(x = lagval, y = .data$lower),
                        inherit.aes = FALSE,
                        color = ci.col, linetype = "dashed")
   }
 
   # Add margins
   if (!is.null(mar)) {
-    g <- g  + theme(plot.margin = unit(mar, "lines"))
+    g <- g  + ggplot2::theme(plot.margin = ggplot2::unit(mar, "lines"))
   }
   if (!is.null(oma)) {
     # not implemented, yet
@@ -123,7 +121,3 @@ plot.ccf <- function(x, ci = 0.95, type = "h",
 
   invisible(g)
 }
-
-
-#p <- plot(o, ci = 0.95, ci.type = "white", type = "h", sub = "YEAH!")
-#print(p)
