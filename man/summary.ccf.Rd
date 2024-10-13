@@ -5,10 +5,12 @@
 \title{summary.ccf
 Summary for a cross-correlation object \code{ccf}.}
 \usage{
-\method{summary}{ccf}(obj)
+\method{summary}{ccf}(object, ...)
 }
 \arguments{
-\item{obj}{an object of class \code{ccf}.}
+\item{object}{an object of class \code{ccf}.}
+
+\item{...}{additional arguments to be passed to or from methods (unused).}
 }
 \value{
 This function computes and returns a list of summary statistics:

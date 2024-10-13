@@ -207,10 +207,10 @@
 #' between `x[t+k]` and `y[t]`.
 #'
 #' The result is returned invisibly if plot is TRUE.
-#' @seealso `[stats::ccf()]`
+#' @seealso [stats::ccf()]
 #' @author Jan Seifert
 #' @export
-ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
+ccf_ <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
                  stationary = NULL,
                  shiftaction = c("cut", "wrap", "replace", "imprison"),
                  replaceby = NULL, ci = NULL,
@@ -382,3 +382,4 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
     return(acf.out)
 }
 
+ccf_( 1:10, 1:10, shiftaction = "cut", plot = FALSE, ci = 0.95)

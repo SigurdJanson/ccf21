@@ -5,7 +5,7 @@
 \title{as.matrix.ccf
 Convert object of type \code{ccf} into a matrix.}
 \usage{
-\method{as.matrix}{ccf}(x, rownames.force = TRUE)
+\method{as.matrix}{ccf}(x, rownames.force = TRUE, ...)
 }
 \arguments{
 \item{x}{a \code{ccf} object.}
@@ -13,6 +13,8 @@ Convert object of type \code{ccf} into a matrix.}
 \item{rownames.force}{logical indicating if the resulting matrix
 should have character (rather than \code{NULL}) rownames. The default is
 \code{TRUE}.}
+
+\item{...}{additional arguments to be passed to or from methods (unused).}
 }
 \value{
 Numeric matrix
@@ -22,7 +24,7 @@ as.matrix.ccf
 Convert object of type \code{ccf} into a matrix.
 }
 \examples{
-result <- ccf( 1:10, 1:10, shiftaction = "cut", lag.max = 5, 
+result <- ccf( 1:10, 1:10, shiftaction = "cut", lag.max = 5,
                plot = FALSE, ci = 0.95)
 }
 \author{

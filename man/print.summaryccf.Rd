@@ -5,13 +5,15 @@
 \title{print.summaryccf
 Prints the summary of a \code{ccf} object.}
 \usage{
-\method{print}{summaryccf}(x, digits = max(3, getOption("digits") - 3L))
+\method{print}{summaryccf}(x, digits = max(3, getOption("digits") - 3L), ...)
 }
 \arguments{
 \item{x}{an object of class "\code{summaryccf}", usually, a result of
 a call to \code{summary.ccf}.}
 
 \item{digits}{the number of significant digits to use when printing.}
+
+\item{...}{further arguments passed to print methods (here \verb{[base::print.table()]}).}
 }
 \description{
 print.summaryccf
@@ -21,7 +23,7 @@ Prints the summary of a \code{ccf} object.
 print( summary(ccf(1:10, 10:1)) )
 }
 \seealso{
-\verb{[base::print()]}
+\verb{[base::print.table()]}, \verb{[base::print()]}
 }
 \author{
 Jan Seifert

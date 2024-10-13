@@ -5,11 +5,12 @@
 #' returned from the ccf21 implementation.
 #' @param tol A tolerance below the maximum. When `tol != 0` not only the absolute
 #' maximum will be returned but all values within the interval `[max+tol, max-tol]`.
+#' @param ... additional arguments to be passed to or from methods (unused).
 #'
 #' @return A matrix with two columns. First column contains the correlation / covariances.
 #' The second column gives the according lags.
 #' @export
-max.ccf <- function(x, tol = 0) {
+max.ccf <- function(x, tol = 0, ...) {
   # PRECONDITIONS
   ClassX <- !is.na(match(c("ccf", "acf"), class(x)))
   if( !ClassX[1] ) # not class "ccf"

@@ -94,7 +94,7 @@ this version does not return a confidence interval around zero but around the
 correlation at each lag.
 }
 \seealso{
-\verb{[stats::ccf()]}
+\code{\link[stats:acf]{stats::ccf()}}
 }
 \author{
 Jan Seifert

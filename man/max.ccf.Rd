@@ -4,7 +4,7 @@
 \alias{max.ccf}
 \title{max.ccf}
 \usage{
-\method{max}{ccf}(x, tol = 0)
+\method{max}{ccf}(x, tol = 0, ...)
 }
 \arguments{
 \item{x}{An object of class \code{acf} as returned from \code{stats::ccf()} or \code{ccf} as
@@ -12,6 +12,8 @@ returned from the ccf21 implementation.}
 
 \item{tol}{A tolerance below the maximum. When \code{tol != 0} not only the absolute
 maximum will be returned but all values within the interval \verb{[max+tol, max-tol]}.}
+
+\item{...}{additional arguments to be passed to or from methods (unused).}
 }
 \value{
 A matrix with two columns. First column contains the correlation / covariances.
