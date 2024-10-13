@@ -31,7 +31,7 @@
 #' This implementation drops several arguments. They stay only for
 #' only for compatibility reasons but will be ignored.
 #' @seealso `[stats::plot.acf()]` `[ggplot2::ggplot()]`
-#' `[grapics::plot()]` for type argument.
+#' `[grapics::plot()]` for arguments: `type`, `mar`.
 #' @author Jan Seifert
 #' @source <https://stackoverflow.com/questions/28857241/r-combine-plots-that-use-parmfrow-internally>
 #' by Alex A. (<https://stackoverflow.com/users/3005513/alex-a>)
