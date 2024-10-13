@@ -210,7 +210,7 @@
 #' @seealso [stats::ccf()]
 #' @author Jan Seifert
 #' @export
-ccf_ <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
+ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
                  stationary = NULL,
                  shiftaction = c("cut", "wrap", "replace", "imprison"),
                  replaceby = NULL, ci = NULL,
@@ -223,8 +223,8 @@ ccf_ <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
   if (stats::is.ts(x) && stats::is.ts(y))
     if(abs(stats::frequency(x) - stats::frequency(y)) > getOption("ts.eps")*0.5)
       stop("The time series have different frequencies")
-  x <- stats::na.action(x)
-  y <- stats::na.action(y)
+  x <- na.action(x)
+  y <- na.action(y)
   if (identical(na.action, stats::na.fail) && identical(replaceby, NA))
     stop("Cannot use 'replacement' NA when 'na.action' is fail.")
 
@@ -382,4 +382,3 @@ ccf_ <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
     return(acf.out)
 }
 
-ccf_( 1:10, 1:10, shiftaction = "cut", plot = FALSE, ci = 0.95)
