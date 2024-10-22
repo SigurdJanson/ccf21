@@ -29,6 +29,3 @@ print.ccf <- function (x, digits = max(3, getOption("digits") - 3L), ...) {
 }
 
 
-#result <- ccf( 1:10, 1:10, shiftaction = "cut", lag.max = 5, plot = FALSE )
-#print(result, digits = 4)
-#is.double(drop(result$acf))
