@@ -1,21 +1,104 @@
 library(testthat)
 #source("../R/ccf21.R")
 
-# Correlations
-test_that(".Cor_ccf", {
+
+test_that(".Cor_ccf checks assumptions", {
   expect_error(.Cor_ccf(1:10, 1:9),
                "Correlations assume two vectors of equal length")
   expect_error(.Cor_ccf(1:10, 10:1, type = "xyz"),
                "'arg' should be one of")
+})
+
+
+test_that(".Cor_ccf gives correct results with simple predefined (but complete) series", {
+  # Tests using simple predefined distributions
+
+  #
+  # Correlation = 1, no error variance
+  x <- 1:10
+  y <- 21:30
+
+  o <- .Cor_ccf(x, y, "covariance")
+  e <- 82.5/9 # the product sum divided by (n-1)
+  expect_equal(o, e)
+
+  o <- .Cor_ccf(x, y, "correlation")
+  e <- 1
+  expect_equal(o, e)
+
+  #
+  # Correlation = -1, no error variance
+  x <- 10:1
+  y <- 21:30
+
+  o <- .Cor_ccf(x, y, "covariance")
+  e <- -82.5/9 # the product sum divided by (n-1)
+  expect_equal(o, e)
+
+  o <- .Cor_ccf(x, y, "correlation")
+  e <- -1
+  expect_equal(o, e)
+
+
+  #
+  # Correlation = -0.912
+  x <- 10:1
+  y <- c(-5:-1, 26:30)
+
+  o <- .Cor_ccf(x, y, "covariance")
+  e <- -407.5/9 # the product sum divided by (n-1)
+  expect_equal(o, e)
+
+  o <- .Cor_ccf(x, y, "correlation")
+  e <- e / sd(x) / sd(y)
+  expect_equal(o, e)
+})
+
+
+test_that(".Cor_ccf gives correct results with predefined and incomplete series", {
+  # Tests using simple predefined distributions
+
+  #
+  # Stationary data
+  x <- 1:14
+  y <- 21:34
+
+  o <- .Cor_ccf(x[3:12], y[3:12], "covariance", n = 10, mean = c(mean(x), mean(y)), sd = c(sd(x), sd(y)))
+  e <- 82.5/10 # the product sum divided by n
+  expect_equal(o, e)
+
+  o <- .Cor_ccf(x[3:12], y[3:12], "correlation", n = 10, mean = c(mean(x), mean(y)), sd = c(sd(x), sd(y)))
+  e <- e / sd(x) / sd(y) * 10/9 # the product sum divided by (n-1) divided by sd
+  expect_equal(o, e)
+
+  #
+  # Non-stationary data
+  x <- 1:14
+  y <- 21:34
+
+  o <- .Cor_ccf(x[3:12], y[3:12], "covariance")
+  e <- 82.5/10 # the product sum divided by n
+  expect_equal(o, e)
+
+  o <- .Cor_ccf(x[3:12], y[3:12], "correlation")
+  e <- 1.00 #e / sd(x[3:12]) / sd(y[3:12]) * 10/9
+  expect_equal(o, e)
+
+})
+
+
+test_that(".Cor_ccf gives identical results when correlation = covariance", {
 
   # For standard normal variables: correlation = covariance
-  # Mean and sd have to be set: great way to test this
-  for(i in 1:100) {
+  # - Mean and sd have to be set (great way to test this)
+  # - Systematically check increasing vector lengths
+  # Note: stats::ccf uses `n-1` for correlations and `n` for covariances in the denominator
+  for(N in (2:25)^2) {
     # Create two random vectors
-    N     <- runif(1, 4, 100)
+    #N     <- runif(1, 4, 100)
     Rho   <- runif(1, -0.99, +0.99)
-    Sigma <- 1 #runif(1, 0.5, 20)
-    Mu    <- 0 #runif(1, -10, -10)
+    Sigma <- 1
+    Mu    <- 0
     Comm  <- rnorm(N, Mu, Sigma)
     ErrX  <- rnorm(N, Mu, Sigma)
     ErrY  <- rnorm(N, Mu, Sigma)
@@ -24,22 +107,20 @@ test_that(".Cor_ccf", {
 
     #
     o <- .Cor_ccf(X, Y, "correlation", N, Mu, Sigma)
-    e <- .Cor_ccf(X, Y, "covariance",  N, Mu, Sigma)
+    e <- .Cor_ccf(X, Y, "covariance",  N-1, Mu, Sigma)
     expect_identical(o, e)
   }
 
-  # Tests using predefined distributions
-  o <- .Cor_ccf(1:10, 21:30, "correlation")
-  e <- 1
-  expect_equal(o, e)
+})
 
-  o <- .Cor_ccf(10:1, 21:30, "correlation")
-  e <- -1
-  expect_equal(o, e)
+
+
+test_that(".Cor_ccf gives same results as stats::cor() and stats::cov()", {
 
   # Test by comparison to R-functions cor and cov
-  for (i in 1:100) {
-    N     <- runif(1, 4, 100)
+  # - Systematically check increasing vector lengths
+  for (N in (2:25)^2) {
+    #N     <- runif(1, 4, 100)
     Rho   <- runif(1, -0.99, +0.99)
     Sigma <- runif(1, 0.5, 20)
     Mu    <- runif(1, -10, -10)
@@ -50,8 +131,8 @@ test_that(".Cor_ccf", {
     Y <- Comm * sqrt(abs(Rho)) + ErrY * sqrt(1-abs(Rho))
 
     o <- .Cor_ccf(X, Y, "correlation")
-    expect_equal(o, cor(X, Y))
+    expect_equal(o, stats::cor(X, Y))
     o <- .Cor_ccf(X, Y, "covariance")
-    expect_equal(o, cov(X, Y))
+    expect_equal(o, stats::cov(X, Y))
   }
 })
