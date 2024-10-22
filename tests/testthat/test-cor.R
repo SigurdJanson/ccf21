@@ -19,7 +19,7 @@ test_that(".Cor_ccf gives correct results with simple predefined (but complete) 
   y <- 21:30
 
   o <- .Cor_ccf(x, y, "covariance")
-  e <- 82.5/9 # the product sum divided by (n-1)
+  e <- 82.5/10 # the product sum divided by n
   expect_equal(o, e)
 
   o <- .Cor_ccf(x, y, "correlation")
@@ -32,7 +32,7 @@ test_that(".Cor_ccf gives correct results with simple predefined (but complete) 
   y <- 21:30
 
   o <- .Cor_ccf(x, y, "covariance")
-  e <- -82.5/9 # the product sum divided by (n-1)
+  e <- -82.5/10 # the product sum divided by n
   expect_equal(o, e)
 
   o <- .Cor_ccf(x, y, "correlation")
@@ -46,11 +46,11 @@ test_that(".Cor_ccf gives correct results with simple predefined (but complete) 
   y <- c(-5:-1, 26:30)
 
   o <- .Cor_ccf(x, y, "covariance")
-  e <- -407.5/9 # the product sum divided by (n-1)
+  e <- -407.5/10 # the product sum divided by n
   expect_equal(o, e)
 
   o <- .Cor_ccf(x, y, "correlation")
-  e <- e / sd(x) / sd(y)
+  e <- e / sd(x) / sd(y)  *10/9  # correct denominator
   expect_equal(o, e)
 })
 
@@ -81,7 +81,7 @@ test_that(".Cor_ccf gives correct results with predefined and incomplete series"
   expect_equal(o, e)
 
   o <- .Cor_ccf(x[3:12], y[3:12], "correlation")
-  e <- 1.00 #e / sd(x[3:12]) / sd(y[3:12]) * 10/9
+  e <- 1.00
   expect_equal(o, e)
 
 })
@@ -107,7 +107,7 @@ test_that(".Cor_ccf gives identical results when correlation = covariance", {
 
     #
     o <- .Cor_ccf(X, Y, "correlation", N, Mu, Sigma)
-    e <- .Cor_ccf(X, Y, "covariance",  N-1, Mu, Sigma)
+    e <- .Cor_ccf(X, Y, "covariance",  N-1, Mu, Sigma) # use (N-1) to correct denominator
     expect_identical(o, e)
   }
 
@@ -133,6 +133,6 @@ test_that(".Cor_ccf gives same results as stats::cor() and stats::cov()", {
     o <- .Cor_ccf(X, Y, "correlation")
     expect_equal(o, stats::cor(X, Y))
     o <- .Cor_ccf(X, Y, "covariance")
-    expect_equal(o, stats::cov(X, Y))
+    expect_equal(o, stats::cov(X, Y) *(N-1)/N) # cov uses a (n-1) denominator, ccf uses n
   }
 })
