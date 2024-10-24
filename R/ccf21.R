@@ -64,7 +64,9 @@
 #' both or one mean each.
 #'
 #' @details If mean, sd, or n are given, treat x and y as stationary time
-#' series. To be treated as non-stationary, n, mean and sd must ALL be NA.
+#' series. That implies that you must provide these for the complete sequence
+#' and not for the given **partial** sequences `x` and `y`.
+#' To be treated as non-stationary, n, mean and sd must ALL be NA.
 #' In this case, the functions determines mean, sd, and n based on x and y.
 #' @return The correlation between x and y
 #' @author Jan Seifert
@@ -76,24 +78,24 @@
   type <- match.arg(type)
 
   # CODE
-  if (anyNA(mean) && anyNA(sd) && anyNA(n)) {
+  if (anyNA(mean) && anyNA(sd) && anyNA(n)) { # non-stationary data
     if (type == "correlation")
       test <- stats::cor(x, y)
     else
-      test <- stats::cov(x, y)
-  } else {
+      test <- stats::cov(x, y) * (length(x)-1) / length(x) # don't use (n-1) in denominator but n
+  } else { # stationary data
     # make sure mean & sd have the format 'c(x, y)' without NAs
-    if (length(mean) == 1) mean <- c(mean, mean)
-    if (length(sd)   == 1) sd   <- c(sd, sd)
+    if (length(mean) == 1L) mean <- c(mean, mean)
+    if (length(sd)   == 1L) sd   <- c(sd, sd)
     mean[which(is.na(mean))] <- c(mean(x), mean(y))[which(is.na(mean))]
     sd  [which(is.na(sd))]   <- c(stats::sd(x), stats::sd(y))[which(is.na(sd))]
-    if (is.na(n))  n <- length(x)
+    if (is.na(n)) n <- length(x)
     #
-    cov <- sum( (x - mean[1]) * (y - mean[2]) ) / (n-1)
+    sop <- sum( (x - mean[1L]) * (y - mean[2L]) ) # sum of products
     if (type == "correlation")
-      test <- cov / sd[1] / sd[2]
+      test <- sop / (n-1L) / sd[1] / sd[2]
     else
-      test <- cov
+      test <- sop / n
   }
   # Finish
   return(test)
@@ -215,8 +217,9 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
                  shiftaction = c("cut", "wrap", "replace", "imprison"),
                  replaceby = NULL, ci = NULL,
                  plot = TRUE, na.action = stats::na.fail, ...)  {
-
+  #
   # PRECONDITIONS & PREPARATIONS
+  #
   if (is.matrix(x) || is.matrix(y))
     stop("Only univariate data is allowed.")
 
@@ -262,9 +265,10 @@ ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
   } else ci <- NA
   if (type == "covariance") ci <- NA
 
+  #
   # RUN: Cross-Correlate
+  #
   x.freq <- stats::frequency(x)
-
 
   if(shiftaction == "cut") {
     if(stationary) {

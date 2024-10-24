@@ -50,9 +50,10 @@ test_that(".Cor_ccf gives correct results with simple predefined (but complete) 
   expect_equal(o, e)
 
   o <- .Cor_ccf(x, y, "correlation")
-  e <- e / sd(x) / sd(y)  *10/9  # correct denominator
+  e <- e / sd(x) / sd(y)  *10/9  # correct the denominator
   expect_equal(o, e)
 })
+
 
 
 test_that(".Cor_ccf gives correct results with predefined and incomplete series", {
@@ -63,12 +64,12 @@ test_that(".Cor_ccf gives correct results with predefined and incomplete series"
   x <- 1:14
   y <- 21:34
 
-  o <- .Cor_ccf(x[3:12], y[3:12], "covariance", n = 10, mean = c(mean(x), mean(y)), sd = c(sd(x), sd(y)))
-  e <- 82.5/10 # the product sum divided by n
+  o <- .Cor_ccf(x[3:12], y[3:12], "covariance", n = 14, mean = c(mean(x), mean(y)), sd = c(sd(x), sd(y)))
+  e <- 82.5/14 # the product sum divided by n
   expect_equal(o, e)
 
-  o <- .Cor_ccf(x[3:12], y[3:12], "correlation", n = 10, mean = c(mean(x), mean(y)), sd = c(sd(x), sd(y)))
-  e <- e / sd(x) / sd(y) * 10/9 # the product sum divided by (n-1) divided by sd
+  o <- .Cor_ccf(x[3:12], y[3:12], "correlation", n = 14, mean = c(mean(x), mean(y)), sd = c(sd(x), sd(y)))
+  e <- 82.5/13 / sd(x) / sd(y) # the product sum divided by (n-1) divided by sd
   expect_equal(o, e)
 
   #

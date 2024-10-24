@@ -46,27 +46,28 @@ test_that("ccf21: PRECONDITIONS", {
 
 
 
-test_that("ccf21: shiftaction = \"cut\"", {
+test_that("ccf21: shiftaction = 'cut'", {
   # ONLY non-stationary + cut is being tested, so far, in this section
 
   # Simple test: test with max.lag = 0: ccf21 == cor / cov
+  n <- 20
   for(i in 1:20) {
-    x <- rnorm(20)
-    y <- rnorm(20)
+    x <- rnorm(n)
+    y <- rnorm(n)
     result <- ccf( x, y, shiftaction = "cut", lag.max = 0 )
     expect_equal(result$acf[,,1], cor(x, y))
 
     result <- ccf( x, y, shiftaction = "cut", lag.max = 0, type = "covariance" )
-    expect_equal(result$acf[,,1], cov(x, y))
+    expect_equal(result$acf[,,1], cov(x, y) *(n-1)/n) # cov uses (n-1) in denominator; ccf uses n
   }
 
-  # Simple test: nonstationary correlation is 1 between 1:n x 1:n
+  # Simple test: non-stationary correlation is 1 between 1:n x 1:n
   # - correlation, lag = 5
   result <- ccf( 1:10, 1:10, shiftaction = "cut", lag.max = 5 )
   expect_s3_class(result, c("ccf", "acf"), exact = TRUE)
-  expect_equal(result$acf[,,1], rep(1, 11))
+  expect_equal(result$acf[,,1], rep(1.0, 11L))
   expect_equal(result$lag[,,1], -5L:5L)
-  expect_equal(result$acf.n, c(5:9, 10, 9:5))
+  expect_equal(result$acf.n, c(5:9, 10L, 9:5))
   expect_identical(result$acf.ci, NA)
   expect_identical(result$ci.level, NA)
   expect_identical(result$stationary, FALSE)
@@ -257,7 +258,7 @@ test_that("ccf21: shiftaction = \"imprison\"", {
 })
 
 
-test_that("ccf21: compare with stats::ccf", {
+test_that("ccf21 passes the comparison with stats::ccf", {
   # Sinus
   t <- seq(0, 4*pi, length.out = 100)
   x <- sin(t)
@@ -281,7 +282,7 @@ test_that("ccf21: compare with stats::ccf", {
   e <- stats::ccf(x, y, type = "covariance", plot = FALSE)
   o <- ccf(x, y, type = "covariance", stationary = TRUE, plot = FALSE)
   expect_equal(o$shiftaction, "cut")
-  expect_equal(o$acf[,,1], e$acf[,,1]) #1######################################################
+  expect_equal(o$acf[,,1], e$acf[,,1])
 
   # Sinus, correlation, frequency != 1
   x <- ts(sin(t), frequency = 0.34858)
@@ -306,6 +307,6 @@ test_that("ccf21: compare with stats::ccf", {
   # Random data, covariance
   e <- stats::ccf(x, y, type = "covariance", plot = FALSE)
   o <- ccf(x, y, type = "covariance", stationary = TRUE, plot = FALSE)
-  ###expect_equal(o$acf[,,1], e$acf[,,1]) #2######################################################
+  expect_equal(o$acf[,,1], e$acf[,,1])
 })
 
