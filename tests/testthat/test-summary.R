@@ -28,11 +28,11 @@ test_that("summary.ccf21: content", {
   expect_s3_class(result, "ccf")
   sumry  <- summary(result)
 
-  expect_equal(sumry$range, c(2.5, 9.166666666667))
-  expect_equal(sumry$max, 9.166666666667)
+  expect_equal(sumry$range, c(2.0, 8.25))
+  expect_equal(sumry$max, 8.25)
   expect_equal(sumry$maxpos, 0)
   # maxci
-  expect_equal(sumry$min, 2.5)
+  expect_equal(sumry$min, 2.0)
   expect_equal(sumry$minpos, c(-5, +5))
   # minci
   expect_equal(sumry$nacount, 0)
@@ -45,16 +45,16 @@ test_that("summary.ccf21: content", {
 ##
 test_that("print.summary.ccf21", {
   # Covariance: to check if labels are correct
-  result <- ccf( 1:10, 1:10, shiftaction = "cut", lag.max = 5, type = "covariance" )
+  result <- ccf( 1:10, 1:10, shiftaction = "cut", lag.max = 5, type = "covariance", stationary = TRUE )
   sumry <- summary(result)
   expect_output(print(sumry), "Definition:")
   expect_output(print(sumry), "Type          Cov")
   expect_output(print(sumry), "Shift method  cut")
   expect_output(print(sumry), "Range of lags -5 to 5")
   expect_output(print(sumry), "Values:")
-  expect_output(print(sumry), "Range       2.5 to 9.167")
-  expect_output(print(sumry), "Minimum Cov 2.5 at lag -5, 5")
-  expect_output(print(sumry), "Maximum Cov 9.167 at lag 0")
+  expect_output(print(sumry), "Range       -2.125 to 8.25")
+  expect_output(print(sumry), "Minimum Cov -0.65 at lag -4, 4")
+  expect_output(print(sumry), "Maximum Cov 8.25 at lag 0")
 
   # Correlation: to check if labels are correct
   # I do not have exact value, for now
