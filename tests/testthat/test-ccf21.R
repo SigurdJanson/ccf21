@@ -79,9 +79,9 @@ test_that("ccf21: shiftaction = 'cut'", {
   result <- ccf( 1:10, 1:10, shiftaction = "cut", lag.max = 5, type = "covariance" )
   expect_s3_class(result, c("ccf", "acf"), exact = TRUE)
   expect_equal(result$acf[,,1],
-               c( c(2.5, 3.5, 4.66666666666667, 6, 7.5), # negative lag
-                  9.166666666667,                        # lag = 0
-                  rev(c(2.5, 3.5, 4.66666666666667, 6, 7.5)))) # positive
+               c( c(2.0, 2.916666666, 4.00, 5.25, 6.66666666),       # negative lag
+                  8.25,                                              # lag = 0
+                  rev(c(2.0, 2.916666666, 4.0, 5.25, 6.66666666))))  # positive
   expect_equal(result$lag[,,1], -5:5)
   expect_equal(result$acf.n, c(5:9, 10, 9:5))
   expect_identical(result$acf.ci, NA)
@@ -94,7 +94,7 @@ test_that("ccf21: shiftaction = 'cut'", {
   # - correlation, lag = 3
   result <- ccf( 1:10, 1:10, shiftaction = "cut", lag.max = 3 )
   expect_s3_class(result, c("ccf", "acf"), exact = TRUE)
-  expect_equal(result$acf[,,1], rep(1, 7))
+  expect_equal(result$acf[,,1], rep(1.0, 7L))
   expect_equal(result$lag[,,1], -3:3)
   expect_equal(result$acf.n, c(7:9, 10, 9:7))
   expect_identical(result$acf.ci, NA)
@@ -108,9 +108,9 @@ test_that("ccf21: shiftaction = 'cut'", {
   result <- ccf( 1:10, 1:10, shiftaction = "cut", lag.max = 3, type = "covariance" )
   expect_s3_class(result, c("ccf", "acf"), exact = TRUE)
   expect_equal(result$acf[,,1],
-               c( c(4.66666666666667, 6, 7.5),       # negative lag
-                  9.166666666667,                    # lag = 0
-                  rev(c(4.66666666666667, 6, 7.5)))) # positive
+               c( c(4.00, 5.25, 6.66666666),       # negative lag
+                  8.250,                           # lag = 0
+                  rev(c(4.00, 5.25, 6.66666666)))) # positive
   expect_equal(result$lag[,,1], -3:3)
   expect_equal(result$acf.n, c(7:9, 10, 9:7))
   expect_identical(result$acf.ci, NA)
@@ -215,7 +215,7 @@ test_that("ccf21: shiftaction = \"replace\"", {
                  lag.max = 9, replaceby = NA, na.action = na.pass )
   expect_equal(result$acf[,,1], e)
   # Negative correlation -1, Covariance
-  e <- c(rep(NA, 9), -9.16666666666667, rep(NA, 9))
+  e <- c(rep(NA, 9), -8.25, rep(NA, 9))
   result <- ccf( 1:10, 10:1, shiftaction = "replace",
                  lag.max = 9, replaceby = NA, na.action = na.pass,
                  type = "covariance")
