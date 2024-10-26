@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-experimental-yellow.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![Codecov test coverage](https://codecov.io/gh/SigurdJanson/ccf21/branch/main/graph/badge.svg)](https://app.codecov.io/gh/SigurdJanson/ccf21?branch=main)
+[![Codecov test coverage](https://codecov.io/gh/SigurdJanson/ccf21/graph/badge.svg)](https://app.codecov.io/gh/SigurdJanson/ccf21)
 <!-- badges: end -->
 
 

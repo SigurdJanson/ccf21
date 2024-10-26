@@ -1,4 +1,4 @@
-2024-10-07
+2024-10-26
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- <img src="vignettes/img/logo_huh.svg" align="right" width="20%"/> -->
@@ -7,7 +7,7 @@
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-experimental-yellow.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![Codecov test
-coverage](https://codecov.io/gh/SigurdJanson/ccf21/branch/main/graph/badge.svg)](https://app.codecov.io/gh/SigurdJanson/ccf21?branch=main)
+coverage](https://codecov.io/gh/SigurdJanson/ccf21/graph/badge.svg)](https://app.codecov.io/gh/SigurdJanson/ccf21)
 <!-- badges: end -->
 
 # ccf21
@@ -141,8 +141,6 @@ devtools::install_github("SigurdJanson/ccf21")
 ```
 
 Please note: loading this package will mask `stats::ccf`.
-
-
 
 ## References
 
