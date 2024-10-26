@@ -2,13 +2,16 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="286.50275mm"
-   height="211.30859mm"
-   viewBox="0 0 286.50275 211.30859"
+   width="221.14497mm"
+   height="211.35066mm"
+   viewBox="0 0 221.14498 211.35066"
    version="1.1"
    id="svg2462"
    inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
    sodipodi:docname="ccf_linear_sub.svg"
+   inkscape:export-filename="ccf_linear_sub.png"
+   inkscape:export-xdpi="150"
+   inkscape:export-ydpi="150"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -47,11 +50,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.70710678"
-     inkscape:cx="482.24682"
-     inkscape:cy="342.23968"
+     inkscape:zoom="1"
+     inkscape:cx="283.5"
+     inkscape:cy="358"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer2"
      showgrid="false"
      showguides="true"
      inkscape:guide-bbox="true"
@@ -75,688 +78,753 @@
     </rdf:RDF>
   </metadata>
   <g
-     inkscape:label="Ebene 1"
      inkscape:groupmode="layer"
-     id="layer1"
-     transform="translate(-6.3491482,-87.250309)">
-    <g
-       id="g1327"
-       transform="matrix(0.94022915,0,0,0.65897346,-2.2854438,138.02401)"
-       style="stroke-width:1.27043"
+     id="layer5"
+     inkscape:label="Panel4 (Bottom)"
+     transform="translate(-0.02079019,0.02252577)">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Sansation Light';-inkscape-font-specification:'Sansation Light, ';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="75.41465"
+       y="183.81351"
+       id="text1331-56"
        inkscape:export-xdpi="199"
-       inkscape:export-ydpi="199">
-      <rect
-         inkscape:export-ydpi="199.9998"
-         inkscape:export-xdpi="199.9998"
-         inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
-         y="163.36478"
-         x="9.933939"
-         height="80.079575"
-         width="303.96542"
-         id="rect1432-2-9-8-4-5"
-         style="opacity:1;vector-effect:none;fill:#3980be;fill-opacity:0.174194;fill-rule:nonzero;stroke:none;stroke-width:0.330311;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.32124, 0.660621;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers" />
-      <g
-         inkscape:export-ydpi="199.9998"
-         inkscape:export-xdpi="199.9998"
-         inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
-         style="stroke:#b010c2;stroke-width:0.990013;stroke-opacity:1"
-         transform="matrix(1.465999,0,0,1.1232666,16.891671,46.276946)"
-         id="g3211-3-2-8">
-        <path
-           sodipodi:nodetypes="ccccc"
-           id="path3012-0-7-2"
-           d="m 116.52452,64.969028 16.669,-7.45718 16.66901,-7.237857 16.66899,-7.237856 16.66901,-7.457185"
-           style="fill:none;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           inkscape:connector-curvature="0" />
-        <circle
-           id="ellipse3024-2-8-8"
-           cy="64.969025"
-           cx="116.52452"
-           style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3026-6-0-7"
-           cy="57.511848"
-           cx="133.19353"
-           style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3028-8-1-4"
-           cy="50.273987"
-           cx="149.86253"
-           style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3030-9-7-7"
-           cy="43.036133"
-           cx="166.53152"
-           style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3032-0-9-6"
-           cy="35.578953"
-           cx="183.20053"
-           style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-      </g>
-      <rect
-         inkscape:export-ydpi="199.9998"
-         inkscape:export-xdpi="199.9998"
-         inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
-         y="83.28521"
-         x="9.3678131"
-         height="80.079575"
-         width="303.96542"
-         id="rect1432-2-9-8-4"
-         style="opacity:1;vector-effect:none;fill:#3980be;fill-opacity:0.174194;fill-rule:nonzero;stroke:none;stroke-width:0.330311;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.32124, 0.660621;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers" />
-      <g
-         inkscape:export-ydpi="199.9998"
-         inkscape:export-xdpi="199.9998"
-         inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
-         style="stroke-width:0.990013"
-         transform="matrix(1.465999,0,0,1.1232666,-31.959994,46.276946)"
-         id="g3211">
-        <path
-           id="path3012"
-           d="m 33.398851,101.59697 16.449672,-7.457192 16.669003,-7.237852 16.668999,-7.457187 16.669,-7.237848 16.668995,-7.237863 16.669,-7.45718 16.66901,-7.237857 16.66899,-7.237856 16.66901,-7.457185"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           inkscape:connector-curvature="0" />
-        <circle
-           id="ellipse3014"
-           cy="101.59695"
-           cx="33.398853"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3016"
-           cy="94.139778"
-           cx="49.848526"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3018"
-           cy="86.901924"
-           cx="66.517525"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3020"
-           cy="79.44474"
-           cx="83.186523"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3022"
-           cy="72.206894"
-           cx="99.85553"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3024"
-           cy="64.969025"
-           cx="116.52452"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3026"
-           cy="57.511848"
-           cx="133.19353"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3028"
-           cy="50.273987"
-           cx="149.86253"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3030"
-           cy="43.036133"
-           cx="166.53152"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3032"
-           cy="35.578953"
-           cx="183.20053"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-      </g>
-      <rect
-         inkscape:export-ydpi="199.9998"
-         inkscape:export-xdpi="199.9998"
-         inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
-         y="83.28521"
-         x="237.56914"
-         height="80.083656"
-         width="75.764107"
-         id="rect1432-2-9-8-6"
-         style="opacity:1;vector-effect:none;fill:#f6f5fc;fill-opacity:0.703226;fill-rule:nonzero;stroke:#000000;stroke-width:0.330311;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.32124, 0.660621;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers" />
-      <rect
-         inkscape:export-ydpi="199.9998"
-         inkscape:export-xdpi="199.9998"
-         inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
-         y="83.280579"
-         x="9.3592434"
-         height="80.079575"
-         width="176.91975"
-         id="rect1432-2-9-8"
-         style="opacity:1;vector-effect:none;fill:#f6f5fc;fill-opacity:0.703226;fill-rule:nonzero;stroke:#000000;stroke-width:0.330311;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.32124, 0.660621;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers" />
+       inkscape:export-ydpi="199"
+       inkscape:label="Lag3"><tspan
+         sodipodi:role="line"
+         id="tspan1329-6"
+         x="75.41465"
+         y="183.81351"
+         style="stroke-width:0.264583">Lag = 3</tspan></text>
+    <g
+       inkscape:export-ydpi="199.9998"
+       inkscape:export-xdpi="199.9998"
+       inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
+       style="stroke-width:0.990013"
+       transform="matrix(1.378375,0,0,0.74020288,-38.684303,134.0393)"
+       id="g3211-0"
+       inkscape:label="1:10">
       <path
-         inkscape:connector-curvature="0"
-         inkscape:export-ydpi="199.9998"
-         inkscape:export-xdpi="199.9998"
-         inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
-         id="path3118"
-         d="M 9.3678142,163.35377 H 313.35146 V 83.285211 H 9.3678142 v 80.068559"
-         style="fill:none;stroke:#000000;stroke-width:0.351484;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" />
-      <rect
-         inkscape:export-ydpi="199.9998"
-         inkscape:export-xdpi="199.9998"
-         inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
-         y="-76.873947"
-         x="9.3678131"
-         height="80.079575"
-         width="303.96542"
-         id="rect1432-2-9-8-4-6"
-         style="opacity:1;vector-effect:none;fill:#3980be;fill-opacity:0.174194;fill-rule:nonzero;stroke:none;stroke-width:0.330311;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.32124, 0.660621;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers" />
-      <g
-         inkscape:export-ydpi="199.9998"
-         inkscape:export-xdpi="199.9998"
-         inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
-         style="stroke-width:0.990013"
-         transform="matrix(1.465999,0,0,1.1232666,-31.959998,-113.8822)"
-         id="g3211-6">
-        <path
-           id="path3012-02"
-           d="m 33.398851,101.59697 16.449672,-7.457192 16.669003,-7.237852 16.668999,-7.457187 16.669,-7.237848 16.668995,-7.237863 16.669,-7.45718 16.66901,-7.237857 16.66899,-7.237856 16.66901,-7.457185"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           inkscape:connector-curvature="0" />
-        <circle
-           id="ellipse3014-7"
-           cy="101.59695"
-           cx="33.398853"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3016-4"
-           cy="94.139778"
-           cx="49.848526"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3018-6"
-           cy="86.901924"
-           cx="66.517525"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3020-6"
-           cy="79.44474"
-           cx="83.186523"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3022-7"
-           cy="72.206894"
-           cx="99.85553"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3024-1"
-           cy="64.969025"
-           cx="116.52452"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3026-2"
-           cy="57.511848"
-           cx="133.19353"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3028-4"
-           cy="50.273987"
-           cx="149.86253"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3030-5"
-           cy="43.036133"
-           cx="166.53152"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3032-6"
-           cy="35.578953"
-           cx="183.20053"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-      </g>
-      <g
-         inkscape:export-ydpi="199.9998"
-         inkscape:export-xdpi="199.9998"
-         inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
-         style="stroke:#b010c2;stroke-width:0.990013;stroke-opacity:1"
-         transform="matrix(1.465999,0,0,1.1232666,-31.974376,-113.8822)"
-         id="g3211-3-2">
-        <path
-           sodipodi:nodetypes="ccccc"
-           id="path3012-0-7"
-           d="m 116.52452,64.969028 16.669,-7.45718 16.66901,-7.237857 16.66899,-7.237856 16.66901,-7.457185"
-           style="fill:none;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           inkscape:connector-curvature="0" />
-        <circle
-           id="ellipse3024-2-8"
-           cy="64.969025"
-           cx="116.52452"
-           style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3026-6-0"
-           cy="57.511848"
-           cx="133.19353"
-           style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3028-8-1"
-           cy="50.273987"
-           cx="149.86253"
-           style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3030-9-7"
-           cy="43.036133"
-           cx="166.53152"
-           style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3032-0-9"
-           cy="35.578953"
-           cx="183.20053"
-           style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-      </g>
-      <rect
-         inkscape:export-ydpi="199.9998"
-         inkscape:export-xdpi="199.9998"
-         inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
-         y="-76.873947"
-         x="237.56914"
-         height="80.083656"
-         width="75.764107"
-         id="rect1432-2-9-8-6-0"
-         style="opacity:1;vector-effect:none;fill:#f6f5fc;fill-opacity:0.703226;fill-rule:nonzero;stroke:#000000;stroke-width:0.330311;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.32124, 0.660621;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers" />
-      <rect
-         inkscape:export-ydpi="199.9998"
-         inkscape:export-xdpi="199.9998"
-         inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
-         y="-76.878571"
-         x="9.3592434"
-         height="80.079575"
-         width="127.91644"
-         id="rect1432-2-9-8-0"
-         style="opacity:1;vector-effect:none;fill:#f6f5fc;fill-opacity:0.703226;fill-rule:nonzero;stroke:#000000;stroke-width:0.330311;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.32124, 0.660621;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers" />
+         id="path3012-6"
+         d="m 33.398851,101.59697 16.449672,-7.457192 16.669003,-7.237852 16.668999,-7.457187 16.669,-7.237848 16.668995,-7.237863 16.669,-7.45718 16.66901,-7.237857 16.66899,-7.237856 16.66901,-7.457185"
+         style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <ellipse
+         id="ellipse3014-1"
+         cy="101.59695"
+         cx="33.398853"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3016-1"
+         cy="94.139778"
+         cx="49.848526"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3018-7"
+         cy="86.901924"
+         cx="66.517525"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3020-2"
+         cy="79.44474"
+         cx="83.186523"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3022-3"
+         cy="72.206894"
+         cx="99.85553"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3024-9"
+         cy="64.969025"
+         cx="116.52452"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3026-6"
+         cy="57.511845"
+         cx="133.19353"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3028-47"
+         cy="50.273987"
+         cx="149.86253"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3030-3"
+         cy="43.036133"
+         cx="166.53152"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3032-9"
+         cy="35.578953"
+         cx="183.20053"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+    </g>
+    <g
+       inkscape:export-ydpi="199.9998"
+       inkscape:export-xdpi="199.9998"
+       inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
+       style="stroke:#b010c2;stroke-width:0.990013;stroke-opacity:1"
+       transform="matrix(1.378375,0,0,0.74020288,-84.669387,161.15139)"
+       id="g3211-3-2-8-4"
+       inkscape:label="1:5">
       <path
-         inkscape:connector-curvature="0"
-         inkscape:export-ydpi="199.9998"
-         inkscape:export-xdpi="199.9998"
-         inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
-         id="path3118-5"
-         d="M 9.3678114,3.1946494 H 313.35146 V -76.873948 H 9.3678114 V 3.1946494"
-         style="fill:none;stroke:#000000;stroke-width:0.351484;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" />
-      <g
-         inkscape:export-ydpi="199.9998"
-         inkscape:export-xdpi="199.9998"
-         inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
-         style="stroke:#b010c2;stroke-width:0.990013;stroke-opacity:1"
-         transform="matrix(1.465999,0,0,1.1232666,41.360561,126.35652)"
-         id="g3211-3-2-8-4">
-        <path
-           sodipodi:nodetypes="ccccc"
-           id="path3012-0-7-2-0"
-           d="m 116.52452,64.969028 16.669,-7.45718 16.66901,-7.237857 16.66899,-7.237856 16.66901,-7.457185"
-           style="fill:none;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           inkscape:connector-curvature="0" />
-        <circle
-           id="ellipse3024-2-8-8-0"
-           cy="64.969025"
-           cx="116.52452"
-           style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3026-6-0-7-7"
-           cy="57.511848"
-           cx="133.19353"
-           style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3028-8-1-4-2"
-           cy="50.273987"
-           cx="149.86253"
-           style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3030-9-7-7-5"
-           cy="43.036133"
-           cx="166.53152"
-           style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3032-0-9-6-5"
-           cy="35.578953"
-           cx="183.20053"
-           style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-      </g>
-      <g
-         inkscape:export-ydpi="199.9998"
-         inkscape:export-xdpi="199.9998"
-         inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
-         style="stroke-width:0.990013"
-         transform="matrix(1.465999,0,0,1.1232666,-31.959987,126.35652)"
-         id="g3211-0">
-        <path
-           id="path3012-6"
-           d="m 33.398851,101.59697 16.449672,-7.457192 16.669003,-7.237852 16.668999,-7.457187 16.669,-7.237848 16.668995,-7.237863 16.669,-7.45718 16.66901,-7.237857 16.66899,-7.237856 16.66901,-7.457185"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           inkscape:connector-curvature="0" />
-        <circle
-           id="ellipse3014-1"
-           cy="101.59695"
-           cx="33.398853"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3016-1"
-           cy="94.139778"
-           cx="49.848526"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3018-7"
-           cy="86.901924"
-           cx="66.517525"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3020-2"
-           cy="79.44474"
-           cx="83.186523"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3022-3"
-           cy="72.206894"
-           cx="99.85553"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3024-9"
-           cy="64.969025"
-           cx="116.52452"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3026-6"
-           cy="57.511848"
-           cx="133.19353"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3028-47"
-           cy="50.273987"
-           cx="149.86253"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3030-3"
-           cy="43.036133"
-           cx="166.53152"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3032-9"
-           cy="35.578953"
-           cx="183.20053"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-      </g>
-      <rect
-         inkscape:export-ydpi="199.9998"
-         inkscape:export-xdpi="199.9998"
-         inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
-         y="163.36478"
-         x="237.56918"
-         height="80.083656"
-         width="75.764107"
-         id="rect1432-2-9-8-6-07"
-         style="opacity:1;vector-effect:none;fill:#f6f5fc;fill-opacity:0.703226;fill-rule:nonzero;stroke:#000000;stroke-width:0.330311;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.32124, 0.660621;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers" />
-      <rect
-         inkscape:export-ydpi="199.9998"
-         inkscape:export-xdpi="199.9998"
-         inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
-         y="163.36015"
-         x="9.3592453"
-         height="80.079575"
-         width="200.96936"
-         id="rect1432-2-9-8-00"
-         style="opacity:1;vector-effect:none;fill:#f6f5fc;fill-opacity:0.703226;fill-rule:nonzero;stroke:#000000;stroke-width:0.330311;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.32124, 0.660621;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers" />
+         sodipodi:nodetypes="ccccc"
+         id="path3012-0-7-2-0"
+         d="m 116.52452,64.969028 16.669,-7.45718 16.66901,-7.237857 16.66899,-7.237856 16.66901,-7.457185"
+         style="fill:none;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <ellipse
+         id="ellipse3024-2-8-8-0"
+         cy="64.969025"
+         cx="116.52452"
+         style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387846" />
+      <ellipse
+         id="ellipse3026-6-0-7-7"
+         cy="57.511848"
+         cx="133.19353"
+         style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387846" />
+      <ellipse
+         id="ellipse3028-8-1-4-2"
+         cy="50.273987"
+         cx="149.86253"
+         style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387846" />
+      <ellipse
+         id="ellipse3030-9-7-7-5"
+         cy="43.036133"
+         cx="166.53152"
+         style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387846" />
+      <ellipse
+         id="ellipse3032-0-9-6-5"
+         cy="35.578953"
+         cx="183.20053"
+         style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387846" />
+    </g>
+    <rect
+       inkscape:export-ydpi="199.9998"
+       inkscape:export-xdpi="199.9998"
+       inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
+       y="158.42676"
+       x="102.32867"
+       height="52.773006"
+       width="118.78501"
+       id="rect1432-2-9-8-6-07"
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#f2f2f2;fill-opacity:0.8;fill-rule:nonzero;stroke:none;stroke-width:0.260001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.04, 0.52;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:stroke fill markers;stop-color:#000000;stop-opacity:1"
+       inkscape:label="Cover Right" />
+    <rect
+       inkscape:export-ydpi="199.9998"
+       inkscape:export-xdpi="199.9998"
+       inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
+       y="158.42371"
+       x="0.14977658"
+       height="52.770313"
+       width="72.338402"
+       id="rect1432-2-9-8-00"
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#f2f2f2;fill-opacity:0.8;fill-rule:nonzero;stroke:none;stroke-width:0.260001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.04, 0.52;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:stroke fill markers;stop-color:#000000;stop-opacity:1"
+       inkscape:label="Cover Left" />
+    <path
+       inkscape:connector-curvature="0"
+       inkscape:export-ydpi="199.9998"
+       inkscape:export-xdpi="199.9998"
+       inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
+       id="path3118-9"
+       d="M 0.16536084,211.18981 H 221.02743 V 158.42676 H 0.16536084 v 52.76305"
+       style="fill:none;stroke:#000000;stroke-width:0.276667;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:label="Frame" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="Panel3"
+     transform="translate(-0.02079019,0.02252577)">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Sansation Light';-inkscape-font-specification:'Sansation Light, ';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="52.927567"
+       y="136.40068"
+       id="text1331-5"
+       inkscape:export-xdpi="199"
+       inkscape:export-ydpi="199"
+       inkscape:label="Lag2"><tspan
+         sodipodi:role="line"
+         id="tspan1329-3"
+         x="52.927567"
+         y="136.40068"
+         style="stroke-width:0.264583">Lag = 2</tspan></text>
+    <g
+       inkscape:export-ydpi="199.9998"
+       inkscape:export-xdpi="199.9998"
+       inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
+       style="stroke-width:0.990013"
+       transform="matrix(1.378375,0,0,0.74020288,-38.684311,81.26898)"
+       id="g3211"
+       inkscape:label="1:10">
       <path
-         inkscape:connector-curvature="0"
-         inkscape:export-ydpi="199.9998"
-         inkscape:export-xdpi="199.9998"
-         inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
-         id="path3118-9"
-         d="M 9.3678239,243.43334 H 313.35147 V 163.36478 H 9.3678239 v 80.06856"
-         style="fill:none;stroke:#000000;stroke-width:0.351484;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" />
-      <rect
-         inkscape:export-ydpi="199.9998"
-         inkscape:export-xdpi="199.9998"
-         inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
-         y="3.2010021"
-         x="9.3592434"
-         height="80.079575"
-         width="303.96542"
-         id="rect1432-2-9-8-4-6-4"
-         style="opacity:1;vector-effect:none;fill:#3980be;fill-opacity:0.174194;fill-rule:nonzero;stroke:none;stroke-width:0.330311;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.32124, 0.660621;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers" />
-      <g
-         inkscape:export-ydpi="199.9998"
-         inkscape:export-xdpi="199.9998"
-         inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
-         style="stroke-width:0.990013"
-         transform="matrix(1.465999,0,0,1.1232666,-31.968009,-33.807257)"
-         id="g3211-6-1">
-        <path
-           id="path3012-02-6"
-           d="m 33.398851,101.59697 16.449672,-7.457192 16.669003,-7.237852 16.668999,-7.457187 16.669,-7.237848 16.668995,-7.237863 16.669,-7.45718 16.66901,-7.237857 16.66899,-7.237856 16.66901,-7.457185"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           inkscape:connector-curvature="0" />
-        <circle
-           id="ellipse3014-7-5"
-           cy="101.59695"
-           cx="33.398853"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3016-4-5"
-           cy="94.139778"
-           cx="49.848526"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3018-6-2"
-           cy="86.901924"
-           cx="66.517525"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3020-6-4"
-           cy="79.44474"
-           cx="83.186523"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3022-7-4"
-           cy="72.206894"
-           cx="99.85553"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3024-1-3"
-           cy="64.969025"
-           cx="116.52452"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3026-2-4"
-           cy="57.511848"
-           cx="133.19353"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3028-4-5"
-           cy="50.273987"
-           cx="149.86253"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3030-5-4"
-           cy="43.036133"
-           cx="166.53152"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3032-6-1"
-           cy="35.578953"
-           cx="183.20053"
-           style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-      </g>
-      <g
-         inkscape:export-ydpi="199.9998"
-         inkscape:export-xdpi="199.9998"
-         inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
-         style="stroke:#b010c2;stroke-width:0.990013;stroke-opacity:1"
-         transform="matrix(1.465999,0,0,1.1232666,-7.5373657,-33.807257)"
-         id="g3211-3-2-5">
-        <path
-           sodipodi:nodetypes="ccccc"
-           id="path3012-0-7-0"
-           d="m 116.52452,64.969028 16.669,-7.45718 16.66901,-7.237857 16.66899,-7.237856 16.66901,-7.457185"
-           style="fill:none;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           inkscape:connector-curvature="0" />
-        <circle
-           id="ellipse3024-2-8-0"
-           cy="64.969025"
-           cx="116.52452"
-           style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3026-6-0-6"
-           cy="57.511848"
-           cx="133.19353"
-           style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3028-8-1-9"
-           cy="50.273987"
-           cx="149.86253"
-           style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3030-9-7-2"
-           cy="43.036133"
-           cx="166.53152"
-           style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-        <circle
-           id="ellipse3032-0-9-7"
-           cy="35.578953"
-           cx="183.20053"
-           style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-           r="0.65798694" />
-      </g>
-      <rect
-         inkscape:export-ydpi="199.9998"
-         inkscape:export-xdpi="199.9998"
-         inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
-         y="3.2010021"
-         x="237.55829"
-         height="80.083656"
-         width="75.764107"
-         id="rect1432-2-9-8-6-0-9"
-         style="opacity:1;vector-effect:none;fill:#f6f5fc;fill-opacity:0.703226;fill-rule:nonzero;stroke:#000000;stroke-width:0.330311;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.32124, 0.660621;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers" />
-      <rect
-         inkscape:export-ydpi="199.9998"
-         inkscape:export-xdpi="199.9998"
-         inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
-         y="3.1963787"
-         x="9.3512325"
-         height="80.079575"
-         width="152.41107"
-         id="rect1432-2-9-8-0-2"
-         style="opacity:1;vector-effect:none;fill:#f6f5fc;fill-opacity:0.703226;fill-rule:nonzero;stroke:#000000;stroke-width:0.330311;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.32124, 0.660621;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers" />
+         id="path3012"
+         d="m 33.398851,101.59697 16.449672,-7.457192 16.669003,-7.237852 16.668999,-7.457187 16.669,-7.237848 16.668995,-7.237863 16.669,-7.45718 16.66901,-7.237857 16.66899,-7.237856 16.66901,-7.457185"
+         style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <ellipse
+         id="ellipse3014"
+         cy="101.59695"
+         cx="33.398853"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3016"
+         cy="94.139778"
+         cx="49.848526"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3018"
+         cy="86.901924"
+         cx="66.517525"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3020"
+         cy="79.44474"
+         cx="83.186523"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3022"
+         cy="72.206894"
+         cx="99.85553"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3024"
+         cy="64.969025"
+         cx="116.52452"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3026"
+         cy="57.511845"
+         cx="133.19353"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3028"
+         cy="50.273987"
+         cx="149.86253"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3030"
+         cy="43.036133"
+         cx="166.53152"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3032"
+         cy="35.578953"
+         cx="183.20053"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+    </g>
+    <g
+       inkscape:export-ydpi="199.9998"
+       inkscape:export-xdpi="199.9998"
+       inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
+       style="stroke:#b010c2;stroke-width:0.990013;stroke-opacity:1"
+       transform="matrix(1.378375,0,0,0.74020288,-107.61371,108.38107)"
+       id="g3211-3-2-8"
+       inkscape:label="1:5">
       <path
+         sodipodi:nodetypes="ccccc"
+         id="path3012-0-7-2"
+         d="m 116.52452,64.969028 16.669,-7.45718 16.66901,-7.237857 16.66899,-7.237856 16.66901,-7.457185"
+         style="fill:none;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <ellipse
+         id="ellipse3024-2-8-8"
+         cy="64.969025"
+         cx="116.52452"
+         style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387846" />
+      <ellipse
+         id="ellipse3026-6-0-7"
+         cy="57.511848"
+         cx="133.19353"
+         style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387846" />
+      <ellipse
+         id="ellipse3028-8-1-4"
+         cy="50.273987"
+         cx="149.86253"
+         style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387846" />
+      <ellipse
+         id="ellipse3030-9-7-7"
+         cy="43.036133"
+         cx="166.53152"
+         style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387846" />
+      <ellipse
+         id="ellipse3032-0-9-6"
+         cy="35.578953"
+         cx="183.20053"
+         style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387846" />
+    </g>
+    <rect
+       inkscape:export-ydpi="199.9998"
+       inkscape:export-xdpi="199.9998"
+       inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
+       y="105.65644"
+       x="102.22028"
+       height="52.773006"
+       width="118.89333"
+       id="rect1432-2-9-8-6"
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#f2f2f2;fill-opacity:0.8;fill-rule:nonzero;stroke:none;stroke-width:0.260001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.04, 0.52;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:stroke fill markers;stop-color:#000000;stop-opacity:1"
+       inkscape:label="Cover Right" />
+    <rect
+       inkscape:export-ydpi="199.9998"
+       inkscape:export-xdpi="199.9998"
+       inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
+       y="83.280579"
+       x="9.3404455"
+       height="80.079575"
+       width="52.577209"
+       id="rect1432-2-9-8"
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#f2f2f2;fill-opacity:0.80000001;fill-rule:nonzero;stroke:none;stroke-width:0.33031188;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.32124245, 0.66062122;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:stroke fill markers;stop-color:#000000;stop-opacity:1"
+       transform="matrix(0.94022915,0,0,0.65897347,-8.6345919,50.7737)"
+       inkscape:label="Cover Left" />
+    <path
+       inkscape:connector-curvature="0"
+       inkscape:export-ydpi="199.9998"
+       inkscape:export-xdpi="199.9998"
+       inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
+       id="path3118"
+       d="M 0.16535379,158.4195 H 221.02742 V 105.65644 H 0.16535379 v 52.76306"
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.276667;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:label="Frame" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Panel2"
+     transform="translate(-0.02079019,0.02252577)">
+    <g
+       inkscape:export-ydpi="199.9998"
+       inkscape:export-xdpi="199.9998"
+       inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
+       style="stroke-width:0.990013"
+       transform="matrix(1.378375,0,0,0.74020288,-38.691846,28.495617)"
+       id="g3211-6-1"
+       inkscape:label="_1:10">
+      <path
+         id="path3012-02-6"
+         d="m 33.398851,101.59697 16.449672,-7.457192 16.669003,-7.237852 16.668999,-7.457187 16.669,-7.237848 16.668995,-7.237863 16.669,-7.45718 16.66901,-7.237857 16.66899,-7.237856 16.66901,-7.457185"
+         style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <ellipse
+         id="ellipse3014-7-5"
+         cy="101.59695"
+         cx="33.398853"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3016-4-5"
+         cy="94.139778"
+         cx="49.848526"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3018-6-2"
+         cy="86.901924"
+         cx="66.517525"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3020-6-4"
+         cy="79.44474"
+         cx="83.186523"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3022-7-4"
+         cy="72.206894"
+         cx="99.85553"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3024-1-3"
+         cy="64.969025"
+         cx="116.52452"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3026-2-4"
+         cy="57.511845"
+         cx="133.19353"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3028-4-5"
+         cy="50.273987"
+         cx="149.86253"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3030-5-4"
+         cy="43.036133"
+         cx="166.53152"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3032-6-1"
+         cy="35.578953"
+         cx="183.20053"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+    </g>
+    <g
+       inkscape:export-ydpi="199.9998"
+       inkscape:export-xdpi="199.9998"
+       inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
+       style="stroke:#b010c2;stroke-width:0.990013;stroke-opacity:1"
+       transform="matrix(1.378375,0,0,0.74020288,-130.57368,55.60771)"
+       id="g3211-3-2-5"
+       inkscape:label="_1:5">
+      <path
+         sodipodi:nodetypes="ccccc"
+         id="path3012-0-7-0"
+         d="m 116.52452,64.969028 16.669,-7.45718 16.66901,-7.237857 16.66899,-7.237856 16.66901,-7.457185"
+         style="fill:none;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <ellipse
+         id="ellipse3024-2-8-0"
+         cy="64.969025"
+         cx="116.52452"
+         style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387846" />
+      <ellipse
+         id="ellipse3026-6-0-6"
+         cy="57.511848"
+         cx="133.19353"
+         style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387846" />
+      <ellipse
+         id="ellipse3028-8-1-9"
+         cy="50.273987"
+         cx="149.86253"
+         style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387846" />
+      <ellipse
+         id="ellipse3030-9-7-2"
+         cy="43.036133"
+         cx="166.53152"
+         style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387846" />
+      <ellipse
+         id="ellipse3032-0-9-7"
+         cy="35.578953"
+         cx="183.20053"
+         style="fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387846" />
+    </g>
+    <rect
+       inkscape:export-ydpi="199.9998"
+       inkscape:export-xdpi="199.9998"
+       inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
+       y="52.883076"
+       x="102.20134"
+       height="52.773006"
+       width="118.93122"
+       id="rect1432-2-9-8-6-0-9"
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#f2f2f2;fill-opacity:0.8;fill-rule:nonzero;stroke:none;stroke-width:0.260001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.04, 0.52;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:stroke fill markers;stop-color:#000000;stop-opacity:1"
+       inkscape:label="Cover Right" />
+    <rect
+       inkscape:export-ydpi="199.9998"
+       inkscape:export-xdpi="199.9998"
+       inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
+       y="52.880028"
+       x="0.15770948"
+       height="52.770313"
+       width="26.355499"
+       id="rect1432-2-9-8-0-2"
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#f2f2f2;fill-opacity:0.80000001;fill-rule:nonzero;stroke:none;stroke-width:0.260001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.04, 0.52;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:stroke fill markers;stop-color:#000000;stop-opacity:1"
+       inkscape:label="Cover Left" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Sansation Light';-inkscape-font-specification:'Sansation Light, ';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="29.644812"
+       y="88.067574"
+       id="text1331-0"
+       inkscape:export-xdpi="199"
+       inkscape:export-ydpi="199"
+       inkscape:label="Lag1"><tspan
+         sodipodi:role="line"
+         id="tspan1329-1"
+         x="29.644812"
+         y="88.067574"
+         style="stroke-width:0.264583">Lag = 1</tspan></text>
+    <path
+       inkscape:connector-curvature="0"
+       inkscape:export-ydpi="199.9998"
+       inkscape:export-xdpi="199.9998"
+       inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
+       id="path3118-5-8"
+       d="M 0.15912369,105.64615 H 221.02119 V 52.883073 H 0.15912369 v 52.763077"
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.276667;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:label="Frame" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Panel1 (top)"
+     transform="translate(-0.02079019,0.02252577)">
+    <g
+       inkscape:export-ydpi="199.9998"
+       inkscape:export-xdpi="199.9998"
+       inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
+       style="stroke-width:0.990013"
+       transform="matrix(1.378375,0,0,0.74020288,-38.684314,-24.271646)"
+       id="g3211-6"
+       inkscape:label="1:10">
+      <path
+         id="path3012-02"
+         d="M 33.398851,101.59697 183.20053,35.57895"
+         style="fill:none;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
          inkscape:connector-curvature="0"
-         inkscape:export-ydpi="199.9998"
-         inkscape:export-xdpi="199.9998"
-         inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
-         id="path3118-5-8"
-         d="M 9.3592394,83.269596 H 313.34289 V 3.2009988 H 9.3592394 V 83.269596"
-         style="fill:none;stroke:#000000;stroke-width:0.351484;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" />
+         sodipodi:nodetypes="cc" />
+      <ellipse
+         id="ellipse3014-7"
+         cy="101.59695"
+         cx="33.398853"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3016-4"
+         cy="94.261612"
+         cx="50.043484"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3018-6"
+         cy="86.926285"
+         cx="66.688118"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3020-6"
+         cy="79.59095"
+         cx="83.332748"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3022-7"
+         cy="72.255615"
+         cx="99.977379"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3024-1"
+         cy="64.92028"
+         cx="116.62201"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3026-2"
+         cy="57.584949"
+         cx="133.26663"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3028-4"
+         cy="50.249619"
+         cx="149.91127"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3030-5"
+         cy="42.914284"
+         cx="166.55589"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+      <ellipse
+         id="ellipse3032-6"
+         cy="35.578953"
+         cx="183.20053"
+         style="fill:#000000;stroke:#000000;stroke-width:0.273904px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         rx="0.65798694"
+         ry="1.3387885" />
+    </g>
+    <g
+       inkscape:export-ydpi="199.9998"
+       inkscape:export-xdpi="199.9998"
+       inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
+       style="stroke:#b010c2;stroke-width:0.991612;stroke-opacity:1"
+       transform="matrix(1.3739334,0,0,0.74020288,-152.74819,2.8404474)"
+       id="g3211-3-2"
+       inkscape:label="1:5">
+      <path
+         sodipodi:nodetypes="cc"
+         id="path3012-0-7"
+         d="M 116.52452,64.969028 183.32053,35.627693"
+         style="fill:none;stroke:#b010c2;stroke-width:0.274346px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+      <ellipse
+         id="ellipse3024-2-8"
+         cy="64.969025"
+         cx="116.52452"
+         style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.274347px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+         rx="0.65798694"
+         ry="1.338974" />
+      <ellipse
+         id="ellipse3026-6-0"
+         cy="57.63369"
+         cx="133.22353"
+         style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.274347px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+         rx="0.65798694"
+         ry="1.338974" />
+      <ellipse
+         id="ellipse3028-8-1"
+         cy="50.298359"
+         cx="149.92252"
+         style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.274347px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+         rx="0.65798694"
+         ry="1.338974" />
+      <ellipse
+         id="ellipse3030-9-7"
+         cy="42.963028"
+         cx="166.62152"
+         style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.274347px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+         rx="0.65798694"
+         ry="1.338974" />
+      <ellipse
+         id="ellipse3032-0-9"
+         cy="35.627693"
+         cx="183.32053"
+         style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#b010c2;fill-opacity:1;stroke:#b010c2;stroke-width:0.274347px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+         rx="0.65798694"
+         ry="1.338974" />
     </g>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Sansation Light';-inkscape-font-specification:'Sansation Light, ';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="165.38106"
-       y="111.77016"
+       x="6.2144527"
+       y="40.578564"
        id="text1331"
        inkscape:export-xdpi="199"
-       inkscape:export-ydpi="199"><tspan
+       inkscape:export-ydpi="199"
+       inkscape:label="Lag0"><tspan
          sodipodi:role="line"
          id="tspan1329"
-         x="165.38106"
-         y="111.77016"
+         x="6.2144527"
+         y="40.578564"
          style="stroke-width:0.264583">Lag = 0</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Sansation Light';-inkscape-font-specification:'Sansation Light, ';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="180.98563"
-       y="164.94102"
-       id="text1331-0"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Sansation Light';-inkscape-font-specification:'Sansation Light, ';letter-spacing:0px;word-spacing:0px;display:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="58.176754"
+       y="44.948837"
+       id="text1331-6"
        inkscape:export-xdpi="199"
-       inkscape:export-ydpi="199"><tspan
+       inkscape:export-ydpi="199"
+       inkscape:label="Explanation"><tspan
          sodipodi:role="line"
-         id="tspan1329-1"
-         x="180.98563"
-         y="164.94102"
-         style="stroke-width:0.264583">Lag = 1</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Sansation Light';-inkscape-font-specification:'Sansation Light, ';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="188.14761"
-       y="223.5524"
-       id="text1331-5"
-       inkscape:export-xdpi="199"
-       inkscape:export-ydpi="199"><tspan
+         id="tspan1329-9"
+         x="58.176754"
+         y="44.948837"
+         style="stroke-width:0.264583">The short sequence </tspan><tspan
          sodipodi:role="line"
-         id="tspan1329-3"
-         x="188.14761"
-         y="223.5524"
-         style="stroke-width:0.264583">Lag = 2</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Sansation Light';-inkscape-font-specification:'Sansation Light, ';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="201.44846"
-       y="274.85559"
-       id="text1331-56"
-       inkscape:export-xdpi="199"
-       inkscape:export-ydpi="199"><tspan
-         sodipodi:role="line"
-         id="tspan1329-6"
-         x="201.44846"
-         y="274.85559"
-         style="stroke-width:0.264583">Lag = 3</tspan></text>
+         x="58.176754"
+         y="50.240501"
+         style="stroke-width:0.264583"
+         id="tspan1">covers the large one</tspan></text>
+    <rect
+       inkscape:export-ydpi="199.9998"
+       inkscape:export-xdpi="199.9998"
+       inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
+       y="0.1158083"
+       x="102.22028"
+       height="52.773006"
+       width="118.89335"
+       id="rect1432-2-9-8-6-0"
+       style="opacity:1;vector-effect:none;fill:#f2f2f2;fill-opacity:0.8;fill-rule:nonzero;stroke:none;stroke-width:0.260001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.04, 0.52;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+       inkscape:label="Cover" />
+    <path
+       inkscape:connector-curvature="0"
+       inkscape:export-ydpi="199.9998"
+       inkscape:export-xdpi="199.9998"
+       inkscape:export-filename="D:\Texte\02 Wissen\!Publikationen\2020 - MomentProblem\MomentProblem.git\pub\ccf_linear.png"
+       id="path3118-5"
+       d="M 0.16535176,52.878889 H 221.02742 V 0.11580773 H 0.16535176 V 52.878889"
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.276667;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:label="Frame" />
   </g>
 </svg>
