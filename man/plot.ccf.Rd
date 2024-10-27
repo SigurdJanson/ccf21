@@ -89,7 +89,7 @@ only for compatibility reasons but will be ignored.
 }
 \seealso{
 \verb{[stats::plot.acf()]} \verb{[ggplot2::ggplot()]}
-\verb{[grapics::plot()]} for type argument.
+\verb{[grapics::plot()]} for arguments: \code{type}, \code{mar}.
 }
 \author{
 Jan Seifert

@@ -38,7 +38,9 @@ deviate from sample estimates.
 }
 \details{
 If mean, sd, or n are given, treat x and y as stationary time
-series. To be treated as non-stationary, n, mean and sd must ALL be NA.
+series. That implies that you must provide these for the complete sequence
+and not for the given \strong{partial} sequences \code{x} and \code{y}.
+To be treated as non-stationary, n, mean and sd must ALL be NA.
 In this case, the functions determines mean, sd, and n based on x and y.
 }
 \seealso{

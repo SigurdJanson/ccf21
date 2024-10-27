@@ -42,7 +42,7 @@ See details.}
 \item{replaceby}{A numeric value that is used when \code{shiftaction = "replace"}.
 Otherwise it is ignored, but if replacement is set this parameter is mandatory.}
 
-\item{ci}{Confidence level (0 < ci < 1).
+\item{ci}{Confidence level (0 < ci < 1). The default does not provide confidence intervals.
 Ignored, if \code{type == "covariance"}.}
 
 \item{plot}{logical. If \code{TRUE} (the default) the \code{ccf} is plotted.}
@@ -81,7 +81,7 @@ argument).}
 The lag \code{k} value returned by \code{ccf(x, y)} estimates the correlation
 between \code{x[t+k]} and \code{y[t]}.
 
-The result is returned invisibly if plot is TRUE.
+The result is returned invisibly if \code{plot} is \code{TRUE}.
 }
 \description{
 ccf
@@ -92,6 +92,30 @@ series.
 Unlike the classic ccf/acf (see \verb{[stats::plot.acf]}) functions
 this version does not return a confidence interval around zero but around the
 correlation at each lag.
+\subsection{Denominators}{
+
+While \verb{type="covariance} uses the sample denominator \code{n} to calculate the result,
+correlations use the denominator for an unbiased estimate \code{n-1}. That way ccf21
+is consistent with \code{\link[stats:acf]{stats::ccf()}}.
+}
+
+\subsection{Shift Action}{
+
+This function offers several options for moving two sequences in relation to each other.
+\itemize{
+\item cut - the \strong{default} method for sequences of the same length.
+Elements are removed if they exceed the range of the other sequence.
+This is the same behaviour as \code{\link[stats:acf]{stats::ccf()}}.
+\item wrap - cyclic sequences can be wrapped. Each element that is moved
+beyond the end of the sequence will reappear at the beginning.
+\item imprison - useful when one sequence is smaller than the other and can be moved
+from one end to the other within the range of the larger sequence. This is the \strong{default}
+if the length of \code{x} and \code{y} is different.
+\item replace - replaces empty places with the value specified by \code{replaceby}.
+}
+
+For a more detailed description, see the vignette.
+}
 }
 \seealso{
 \code{\link[stats:acf]{stats::ccf()}}

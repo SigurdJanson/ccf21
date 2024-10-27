@@ -170,7 +170,7 @@
 #' See details.
 #' @param replaceby A numeric value that is used when `shiftaction = "replace"`.
 #' Otherwise it is ignored, but if replacement is set this parameter is mandatory.
-#' @param ci Confidence level (0 < ci < 1).
+#' @param ci Confidence level (0 < ci < 1). The default does not provide confidence intervals.
 #' Ignored, if `type == "covariance"`.
 #' @param plot logical. If `TRUE` (the default) the `ccf` is plotted.
 #' @param na.action function to be called to handle missing values.
@@ -179,6 +179,25 @@
 #' @details Unlike the classic ccf/acf (see `[stats::plot.acf]`) functions
 #' this version does not return a confidence interval around zero but around the
 #' correlation at each lag.
+#'
+#' ## Denominators
+#' While `type="covariance` uses the sample denominator `n` to calculate the result,
+#' correlations use the denominator for an unbiased estimate `n-1`. That way ccf21
+#' is consistent with [stats::ccf()].
+#'
+#' ## Shift Action
+#' This function offers several options for moving two sequences in relation to each other.
+#' * cut - the **default** method for sequences of the same length.
+#' Elements are removed if they exceed the range of the other sequence.
+#' This is the same behaviour as [stats::ccf()].
+#' * wrap - cyclic sequences can be wrapped. Each element that is moved
+#' beyond the end of the sequence will reappear at the beginning.
+#' * imprison - useful when one sequence is smaller than the other and can be moved
+#' from one end to the other within the range of the larger sequence. This is the **default**
+#' if the length of `x` and `y` is different.
+#' * replace - replaces empty places with the value specified by `replaceby`.
+#'
+#' For a more detailed description, see the vignette.
 #' @return An S3 object of class "`ccf`" and "`acf`", which is a list with
 #' the following elements:
 #' \describe{
@@ -208,8 +227,9 @@
 #' The lag `k` value returned by `ccf(x, y)` estimates the correlation
 #' between `x[t+k]` and `y[t]`.
 #'
-#' The result is returned invisibly if plot is TRUE.
+#' The result is returned invisibly if `plot` is `TRUE`.
 #' @seealso [stats::ccf()]
+
 #' @author Jan Seifert
 #' @export
 ccf <- function (x, y, lag.max = NULL, type = c("correlation", "covariance"),
