@@ -24,7 +24,7 @@ as.matrix.ccf <- function(x, rownames.force = TRUE, ...) {
     result <- rbind(result, x$acf.ci[,1])
     result <- rbind(result, x$acf.ci[,2])
     cilevel <- format(x$ci.level, digits = 2)
-    rows <- c(rows, paste(c("ci.up", "ci.low"), cilevel, sep = "_"))
+    rows <- c(rows, paste(c("ci.up", "ci.lo"), cilevel, sep = "_"))
   }
 
   result <- rbind(result, x$acf.n)
