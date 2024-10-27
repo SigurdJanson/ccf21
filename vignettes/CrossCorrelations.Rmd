@@ -14,13 +14,14 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+```{r setup, include = FALSE}
 library(ccf21)
+library(kableExtra)
 ```
 
 ## Cross Correlations in R
 
-I wanted to use the `ccf` function in a project, but I had a lot of trouble understanding its output. The documentation was quite limited, and even after reading it thoroughly, I still struggled. I had to experiment with the function and take notes to fully grasp how it works. Hopefully, what I learned can help you as well.
+I wanted to use the [`ccf` function](https://rdrr.io/r/stats/acf.html) in a project, but I had a lot of trouble understanding its output. The documentation was quite limited, and even after reading it thoroughly, I still struggled. I had to experiment with the function and take notes to fully grasp how it works. Hopefully, what I learned can help you as well.
 
 ## Cross Correlations
 
@@ -51,7 +52,7 @@ ggplot( Lag, aes(x=N, y=Win)) +
 
 **Time series analysis**. When I finally understood the range better, I began to question the results I was getting. Consider this example:
 
-```{r Simple CCF, fig.width=7}
+```{r Simple-CCF, fig.width=7}
 stats::ccf(1:10, 1:10, plot = TRUE)
 ```
 
@@ -61,11 +62,11 @@ If I cross-correlate two monotonically increasing sequences, why don't I get a c
 
 The first thing to understand is that `ccf` does not just treat your input as regular vectors --- it interprets them as time series. What many introductory explanations of cross-correlation fail to mention are the underlying assumptions that come with this. While cross-correlation is often simplified as the correlation between two sequences shifted relative to one another, there's more to it. Wikipedia covers this issue, but some sources do not (see, for example, [Bourke (1996)](http://paulbourke.net/miscellaneous/correlate/) or the R manual).
 
-One key assumption with time series is stationarity. This means that the process generating the sequence should not change over time, and neither should the variance. This is why `ccf` uses the standard deviations and means of the **entire sequence**, even when calculating the lagged cross-correlation over a limited window.
+One key assumption with time series is *stationarity*. This means that the process generating the sequence should not change over time, and neither should the variance. This is why `ccf` uses the standard deviations and means of the **entire sequence**, even when calculating the lagged cross-correlation over a limited window.
 
-One might suggest using only the data from each time window to compute the standard deviations, since they are not supposed to change. However, samples inherently introduce random fluctuations. The larger the sample, the more accurate the estimate, which is why R handles it this way. This also explains the odd behavior we see with `ccf(1:10, 1:10)`. In this case, the overall mean is higher than the windowed mean for all `k ≠ 0`. As `k` increases, the values are pulled down, resulting in decreasing cross-correlations at the edges.
+One might suggest using only the data from each time window to compute the standard deviations, since they are not supposed to change. However, samples inherently introduce random fluctuations. The larger the sample, the more accurate the estimate, which is why R handles it this way. This also explains the odd behaviour we see with `ccf(1:10, 1:10)`. In this case, the overall mean is higher than the windowed mean for all `k ≠ 0`. As `k` increases, the values are pulled down, resulting in decreasing cross-correlations at the edges.
 
-This is probably why R selects relatively large windows. The larger the sample relative to the total size, the fewer artifacts we can expect in the cross-correlation results.
+This is probably why R selects relatively large windows. The larger the sample relative to the total size, the fewer artefacts we can expect in the cross-correlation results.
 
 ```{=html}
 <!--
@@ -76,7 +77,7 @@ r_t = {\sum_{t=max(1,−k)}^{min(N−t,N)} {(x_t - \bar x) \cdot (y_ {t-k} - \ba
 $$
 -->
 ```
-**Confidence**. You may have noticed the blue lines in the cross-correlation plot above --- these represent the confidence intervals. If you use a sequence with the same distribution but more samples, the intervals will become narrower. However, the manual advises caution with this, which is a little strange because `ci.type = "white"` is the default. In essence: do not trust the default. This setting simply adds confidence intervals based on quantiles of the standard normal distribution, without considering the specific statistical properties of your data. The manual suggests using `ci.type = "ma"` instead, but it appears this option can't be applied to cross-correlations. If you try, you'll get a warning: "can use ci.type='ma' only if first lag is 0." This method only works for auto-correlations (`acf`), where the window doesn't shift from `-k` to `+k` and the first lag can be zero --- something `ccf` does not support.
+**Confidence**. You may have noticed the blue horizontal lines in the cross-correlation plot above --- these represent the confidence intervals. If you use a sequence with the same distribution but more samples, the intervals will become narrower. However, the manual advises caution with this, which is a little strange because `ci.type = "white"` is the default. In essence: do not trust the default. This setting simply adds confidence intervals based on quantiles of the standard normal distribution, without considering the specific statistical properties of your data. The manual suggests using `ci.type = "ma"` instead, but it appears this option can't be applied to cross-correlations. If you try, you'll get a warning: "can use ci.type='ma' only if first lag is 0." This method only works for auto-correlations (`acf`), where the window doesn't shift from `-k` to `+k` and the first lag can be zero --- something `ccf` does not support.
 
 **Output**. In addition to the plot, `ccf` returns a list (of class `acf`) with the following elements:
 
@@ -119,6 +120,36 @@ par(op); rm(op)
 This organizes the results differently, but they are essentially the same. The upper-left and lower-right quadrants display the auto-correlations, while the cross-correlations are split into two panels: the lower-left shows cross-correlations at negative time lags, and the upper-right shows those at positive lags.
 
 I had hoped this method would provide proper confidence intervals for cross-correlations. Unfortunately, it only offers confidence intervals for auto-correlations. If anyone can explain why, I'd be happy to include it here, as I currently do not know the reason.
+
+**Denominator**. As a final note we must be aware that `stats::ccf` uses [different denominators](https://en.wikipedia.org/w/index.php?title=Sample_mean_and_covariance&oldid=1214661143#Unbiasedness) for calculating covariance and correlation. The covariance option uses the sample denominator `n` while correlations are calculated with the estimation denominator `n-1`:
+
+$$ 
+cov(x, y) = \frac{1}{n}\sum_{i=1}^n \left(x_{i} - \bar{x}\right) \left(y_{i} - \bar{y}\right) 
+$$
+$$ 
+cor(x, y) = \frac{1}{n-1}\sum_{i=1}^n \left(x_{i} - \bar{x}\right) \left(y_{i} - \bar{y}\right)
+$$
+This was surprising for a few reasons: first, it’s not documented; second, there doesn’t seem to be a clear rationale for using the biased estimate for covariances; and third, both `cov` and `cor` use the unbiased denominator by default. This inconsistency is unexpected, as it suggests that R, and the stats package in particular, might not always handle these calculations consistently.
+
+The manual does not clarify this discrepancy: *"For type = "correlation" and "covariance", the estimates are based on the sample covariance. (The lag 0 autocorrelation is fixed at 1 by convention.)"* But what does that mean in practice? Let’s examine how it actually works. The table below includes the following rows:
+
+- Header row: time lag.
+- Row 1: covariance values returned by `stats::ccf`.
+- Row 2: covariance values inferred from the correlation. If denominators for cov and cor were  identical this row is identical to row 1.
+- Row 3: covariances recalculated using the corrected denominator, `n-1`.
+
+If covariance and correlation used the same denominator, the 1st and 2nd row would be identical. But that is not the case. Only when we correct the denominator in row 3 we get identical results. This shows that `ccf` uses `n` as the denominator for covariance, while correlation calculations use `n-1`.
+
+
+```{r}
+comparison <- rbind(
+    cov = stats::ccf(1:10, 1:10, plot = FALSE, type="covariance")$acf[,,1],
+    `cor→cov` = stats::ccf(1:10, 1:10, plot = FALSE, type="correlation")$acf[,,1] *sd(1:10)*sd(1:10),
+    `adj. cov` = stats::ccf(1:10, 1:10, plot = FALSE, type="covariance")$acf[,,1] *10/9
+)
+knitr::kable(comparison, digits=3L, col.names=c(-6L:0L, 1L:6L)) |>
+  row_spec(2:3, background  = "#F0FF9A")
+```
 
 -----------------------------------------------------------------------
 
@@ -202,19 +233,23 @@ Sequence y: ###M1###############
 
 ### Confidence Intervals
 
-The new `ccf` function returns confidence intervals as part of the results. The classic R-function computes them when you request a plot. Furthermore, R only returns a rather unspecific "white noise" confidence for the cross-correlation and does not take the structure of the data into account. The updated version supports confidence intervals around the identified cross-correlation. It uses an approach suggested by Bonett & Wright (2000) that transforms the correlations using [Fisher-z transform](https://en.wikipedia.org/w/index.php?title=Fisher_transformation&oldid=946390163). The Fisher z values are approximately normal distributed with a given variance. Now, the function can easily determine the confidence range and transform it back into correlations.
+The new `ccf` function returns confidence intervals as part of the results. The classic R-function computes them when you request a plot. Furthermore, R only returns a rather unspecific "white noise" confidence for the cross-correlation and does not take the structure of the data into account. The updated version supports confidence intervals around the identified cross-correlation. It uses an approach suggested by Bonett & Wright (2000) that transforms the correlations using [Fisher-z transform](https://en.wikipedia.org/w/index.php?title=Fisher_transformation&oldid=1226838743). The Fisher z values are approximately normal distributed with a given variance. Now, the function can easily determine the confidence range and transform it back into correlations.
 
 Note: these confidence intervals are not symmetrical because of the characteristics of the probability distribution of correlations.
 
 ## References & Further Reading
 
-Bonett, D. G. & Wright, T. A. (2000). Sample Size Requirements for Estimating Pearson, Kendall and Spearman Correlations." Psychometrika, 65 (1), p. 23-28.
+Bonett, D. G. & Wright, T. A. (2000). *Sample Size Requirements for Estimating Pearson, Kendall and Spearman Correlations.* Psychometrika, 65 (1), p. 23-28.
 
 Bourke, P. (1996). [Cross Correlation: AutoCorrelation -- 2D Pattern Identification](http://paulbourke.net/miscellaneous/correlate/).
 
+Gunther, N. (2014). [Melbourne's Weather and Cross Correlations](https://www.r-bloggers.com/melbournes-weather-and-cross-correlations/). [R-bloggers](https://www.r-bloggers.com/)
+
 Venables, W.N., & Ripley, B.D. (2002). [Modern Applied Statistics with S](https://www.springer.com/gp/book/9780387954578). Fourth edition.
 
-Gunther, N. (2014). [Melbourne's Weather and Cross Correlations](https://www.r-bloggers.com/melbournes-weather-and-cross-correlations/). [R-bloggers](https://www.r-bloggers.com/)
+Wikipedia. [Fisher transformation](https://en.wikipedia.org/w/index.php?title=Fisher_transformation&oldid=1226838743)
+
+Wikipedia. [Sample mean and covariance - Unbiasedness](https://en.wikipedia.org/w/index.php?title=Sample_mean_and_covariance&oldid=1214661143#Unbiasedness)
 
 ------------------------------------------------------------------------
 
