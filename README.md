@@ -1,4 +1,4 @@
-2024-10-26
+2024-10-28
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- <img src="vignettes/img/logo_huh.svg" align="right" width="20%"/> -->
@@ -9,6 +9,8 @@ stable](https://img.shields.io/badge/lifecycle-experimental-yellow.svg)](https:/
 [![Codecov test
 coverage](https://codecov.io/gh/SigurdJanson/ccf21/graph/badge.svg)](https://app.codecov.io/gh/SigurdJanson/ccf21)
 <!-- badges: end -->
+
+<img src="man/figures/logo.svg" align="right" height="139" alt="" />
 
 # ccf21
 

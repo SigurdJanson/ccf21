@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 [![Codecov test coverage](https://codecov.io/gh/SigurdJanson/ccf21/graph/badge.svg)](https://app.codecov.io/gh/SigurdJanson/ccf21)
 <!-- badges: end -->
 
-
+<img src="man/figures/logo.svg" align="right" height="139" alt="" />
 
 # ccf21
 
