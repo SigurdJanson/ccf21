@@ -1,6 +1,6 @@
 Package: ccf21
 Title: Extended Cross-Correlation Function
-Version: 0.0.0.9000
+Version: 0.0.0.9999
 Authors@R:
     person(given = "Jan",
            family = "Seifert",
